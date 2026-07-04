@@ -48,12 +48,44 @@ export default function Contact() {
     formState: { errors, isSubmitting },
   } = useForm<ContactForm>({ resolver: zodResolver(contactSchema) })
 
-  const onSubmit = async (_data: ContactForm) => {
-    await new Promise((r) => setTimeout(r, 800))
-    toast.success("Message sent!", {
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    })
-    reset()
+  const onSubmit = async (data: ContactForm) => {
+    try {
+      const response = await fetch("/api/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+
+      let result: any = {}
+      const contentType = response.headers.get("content-type")
+      if (contentType && contentType.includes("application/json")) {
+        result = await response.json()
+      } else {
+        if (response.status === 404) {
+          throw new Error(
+            "Local dev server does not support serverless functions. Please deploy to Vercel or run 'vercel dev' to test this locally."
+          )
+        }
+        const text = await response.text()
+        throw new Error(text || `Request failed with status ${response.status}`)
+      }
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message")
+      }
+
+      toast.success("Message sent!", {
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      })
+      reset()
+    } catch (error: any) {
+      console.error("Error sending contact form:", error)
+      toast.error("Failed to send message", {
+        description: error.message || "Please try again later or email me directly.",
+      })
+    }
   }
 
   return (

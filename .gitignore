@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .bolt
+.env
+.vercel
+.env*
