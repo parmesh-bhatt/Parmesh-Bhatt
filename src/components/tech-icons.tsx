@@ -1,348 +1,78 @@
-import type { SVGProps } from "react"
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiHtml5,
+  SiReactquery,
+  SiReactrouter,
+  SiNodedotjs,
+  SiExpress,
+  SiSpringboot,
+  SiKotlin,
+  SiGraphql,
+  SiPostgresql,
+  SiMongodb,
+  SiMysql,
+  SiRedis,
+  SiFirebase,
+  SiGit,
+  SiDocker,
+  SiVercel,
+  SiPostman,
+  SiFigma,
+  SiVscodium,
+  SiTanstack,
+  SiShadcnui,
+  SiJavascript,
+  SiNestjs,
+  SiTypeorm,
+  SiJest
+} from "react-icons/si"
 
-type IconProps = SVGProps<SVGSVGElement>
+import { LuDatabase } from "react-icons/lu"
 
-const base = (props: IconProps): IconProps => ({
-  viewBox: "0 0 24 24",
-  width: "1em",
-  height: "1em",
-  ...props,
-})
-
-export function ReactIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="React">
-      <g fill="none" stroke="currentColor" strokeWidth="1" transform="translate(12 12)">
-        <circle r="2.05" fill="currentColor" stroke="none" />
-        <ellipse rx="11" ry="4.2" />
-        <ellipse rx="11" ry="4.2" transform="rotate(60)" />
-        <ellipse rx="11" ry="4.2" transform="rotate(120)" />
-      </g>
-    </svg>
-  )
-}
-
-export function NextJsIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Next.js">
-      <circle cx="12" cy="12" r="10.5" fill="currentColor" />
-      <path d="M8 7.5v9M8 7.5l8.5 9M16 7.5v6" stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-export function TypeScriptIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="TypeScript">
-      <rect width="24" height="24" rx="3" fill="#3178C6" />
-      <path d="M14.5 11.5h4v1.8h-1.4v6.2h-1.9v-6.2H14.5zM9.2 13.3c-.3-.2-.7-.3-1.2-.3-.4 0-.7.1-.9.2-.2.1-.3.3-.3.6 0 .2.1.4.2.5.1.1.4.3.7.4l1 .4c.5.2.9.5 1.2.8.3.3.4.7.4 1.2 0 .6-.2 1.1-.7 1.5-.5.4-1.1.6-2 .6-.4 0-.8 0-1.1-.1-.3-.1-.7-.2-1-.4l.4-1.2c.3.2.6.3.9.4.3.1.6.1.9.1.4 0 .7-.1.9-.2.2-.1.3-.3.3-.6 0-.2-.1-.4-.2-.5-.1-.1-.4-.3-.7-.4l-1-.4c-.5-.2-.9-.5-1.1-.8-.3-.3-.4-.7-.4-1.2 0-.6.2-1 .7-1.4.4-.4 1-.5 1.8-.5.4 0 .7 0 1 .1.3.1.6.2.9.3l-.4 1.1z" fill="white" />
-    </svg>
-  )
-}
-
-export function TailwindIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Tailwind CSS">
-      <path d="M12 6c-2.7 0-4.3 1.3-5 4 1-1.3 2.2-1.8 3.5-1.5.7.2 1.3.7 1.9 1.4.9.9 2 2 4.1 2 2.7 0 4.3-1.3 5-4-1 1.3-2.2 1.8-3.5 1.5-.7-.2-1.3-.7-1.9-1.4-.9-.9-2-2-4.1-2zM7 12c-2.7 0-4.3 1.3-5 4 1-1.3 2.2-1.8 3.5-1.5.7.2 1.3.7 1.9 1.4.9.9 2 2 4.1 2 2.7 0 4.3-1.3 5-4-1 1.3-2.2 1.8-3.5 1.5-.7-.2-1.3-.7-1.9-1.4-.9-.9-2-2-4.1-2z" fill="#06B6D4" />
-    </svg>
-  )
-}
-
-export function FramerMotionIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Framer Motion">
-      <path d="M4 2h16v8H12L4 2zM4 10h8l8 8H4v-8zM4 18h8v4H4v-4z" fill="currentColor" />
-    </svg>
-  )
-}
-
-export function HtmlCssIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="HTML / CSS">
-      <path d="M5 3l1.5 16.5L12 21l5.5-1.5L19 3H5zm11.5 5.5H9l.3 3h6.9l-.6 6.5L12 18.5l-3.6-1.5-.2-2.5h1.7l.1 1.2 2 .6 2-.6.2-2.3H8.2L7.5 6h9l-.5 2.5z" fill="#E34F26" />
-    </svg>
-  )
-}
-
-export function ReduxIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Redux">
-      <g fill="#764ABC">
-        <path d="M7.5 8.5c.3-.1.6.1.7.4.1.3-.1.6-.4.7-.3.1-.6-.1-.7-.4-.1-.3.1-.6.4-.7zM12 17c-.3.1-.6-.1-.7-.4-.1-.3.1-.6.4-.7.3-.1.6.1.7.4.1.3-.1.6-.4.7zM7 15.5c-.3-.2-.4-.5-.2-.8.2-.3.5-.4.8-.2.3.2.4.5.2.8-.2.3-.5.4-.8.2zM16.5 7.5c.3.2.4.5.2.8-.2.3-.5.4-.8.2-.3-.2-.4-.5-.2-.8.2-.3.5-.4.8-.2z" />
-        <path d="M9 6.5c2-1 4.5-.5 5.8 1.3l-1.4.8c-.7-1-2-1.5-3.2-1-1.2.5-2 1.7-1.9 3l-1.6-.1C6.5 8.7 7.4 7.3 9 6.5zM15 17.5c-2 1-4.5.5-5.8-1.3l1.4-.8c.7 1 2 1.5 3.2 1 1.2-.5 2-1.7 1.9-3l1.6.1c.2 2.1-.7 3.5-2.3 4.3z" />
-      </g>
-    </svg>
-  )
-}
-
-export function ReactQueryIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="React Query">
-      <circle cx="12" cy="12" r="10" fill="#FF4154" />
-      <path d="M7 14l3-5 4 3 3-4" stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-export function NodeJsIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Node.js">
-      <path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.3l7 3.9v7.6l-7 3.9-7-3.9V8.2l7-3.9zM9 9v6h1.5v-3.5L13 15h1.5V9H13v3.5L10.5 9H9z" fill="#339933" />
-    </svg>
-  )
-}
-
-export function ExpressIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Express">
-      <path d="M3 12c0-4.4 3.6-8 8-8 2.5 0 4.7 1.1 6.2 2.9l-1.3.9C14.7 6.5 13 5.7 11 5.7c-3.5 0-6.3 2.8-6.3 6.3s2.8 6.3 6.3 6.3c2 0 3.7-.8 4.9-2.1l1.3.9c-1.5 1.8-3.7 2.9-6.2 2.9-4.4 0-8-3.6-8-8zm14.5 0l2-2.5h-1.5l-1.5 1.8-1.5-1.8H13.5l2 2.5-2 2.5h1.5l1.5-1.8 1.5 1.8h1.5l-2-2.5z" fill="currentColor" />
-    </svg>
-  )
-}
-
-export function SpringBootIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Spring Boot">
-      <path d="M12 2C7 2 3 6 3 11c0 3.5 2 6.5 5 8 .2-.3.4-.7.4-1.1 0-.3-.1-.6-.2-.9-2.3-1.3-3.8-3.7-3.8-6.5 0-4.1 3.4-7.5 7.6-7.5s7.6 3.4 7.6 7.5c0 2.8-1.5 5.2-3.8 6.5-.1.3-.2.6-.2.9 0 .4.2.8.4 1.1 3-1.5 5-4.5 5-8 0-5-4-9-9-9zm0 5c-2.2 0-4 1.8-4 4 0 1.5.8 2.8 2 3.5.1-.4.3-.8.6-1.1.2-.2.5-.4.8-.5-.7-.4-1.2-1.1-1.2-2 0-1.3 1-2.3 2.3-2.3 1.3 0 2.3 1 2.3 2.3 0 .9-.5 1.6-1.2 2 .3.1.6.3.8.5.3.3.5.7.6 1.1 1.2-.7 2-2 2-3.5 0-2.2-1.8-4-4-4zm0 7c-.8 0-1.5.7-1.5 1.5S11.2 17 12 17s1.5-.7 1.5-1.5S12.8 14 12 14z" fill="#6DB33F" />
-    </svg>
-  )
-}
-
-export function JavaIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Java">
-      <g fill="#007396">
-        <path d="M9 13c-1 .5-2 1-2 2 0 .5.4.8.8.8.4 0 .7-.2.9-.5.3-.4.3-1 .3-1.5V13zM10.5 16.5c-.3.4-.7.6-1.2.6-.7 0-1.3-.5-1.3-1.3 0-.7.4-1.2 1.2-1.6.3-.2.7-.3 1-.5.2.5.3 1.5.3 2.8zM11 18c0-1.2 0-2.2-.2-3 1-.5 2.2-1 3.5-1.3-.1.5-.3 1-.5 1.5-1 .3-2 .7-2.8 1.2.1.5.1 1 0 1.6zM14.5 13c-.5.2-1 .3-1.5.5.2-.5.3-1 .4-1.5.5-.2 1-.3 1.5-.5-.1.5-.2 1-.4 1.5z" />
-        <path d="M8.5 19c-.3.3-.7.5-1.2.5-.6 0-1-.4-1-1 0-.6.4-1 1-1.3.3-.2.7-.3 1-.5v.5c-.2.1-.4.2-.6.3-.3.2-.5.4-.5.7 0 .3.2.5.5.5.3 0 .6-.2.8-.4v.7zM11 20c-.2.2-.5.3-.8.3-.4 0-.7-.3-.7-.7 0-.3.2-.6.5-.8.2-.1.4-.2.6-.3v.4c-.1.1-.3.1-.4.2-.1.1-.2.2-.2.4 0 .2.2.3.4.3.2 0 .4-.1.5-.2v.4z" />
-      </g>
-      <path d="M14 8c.5-1 1-1.5 1.5-2 .3-.3.5-.6.5-1 0-.3-.2-.5-.5-.5-.3 0-.6.2-.8.5l-.3-.2c.3-.4.7-.6 1.2-.6.6 0 1 .4 1 .9 0 .5-.3.9-.7 1.3-.4.4-.9.7-1.3 1.2l-.6-.6zm-1.5-1c.3-.4.7-.6 1.2-.6.5 0 .8.3.8.7 0 .4-.3.7-.7 1-.4.3-.8.5-1.2.9l-.1-2z" fill="#ED8B00" />
-    </svg>
-  )
-}
-
-export function KotlinIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Kotlin">
-      <path d="M3 3h18L3 21V3zm0 18l9-9 9 9H3z" fill="#7F52FF" />
-      <path d="M12 12l9 9h-9V12z" fill="#C811E2" />
-      <path d="M3 3l9 9H3V3z" fill="#FF4081" />
-    </svg>
-  )
-}
-
-export function RestApiIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="REST APIs">
-      <path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9-9-4-9-9zm2 0c0 3.9 3.1 7 7 7s7-3.1 7-7-3.1-7-7-7-7 3.1-7 7zm5-3v6h1.5v-2h1.5l1 2H16l-1.2-2.2c.7-.3 1.2-1 1.2-1.8 0-1.1-.9-2-2-2H10zm1.5 1h1c.3 0 .5.2.5.5s-.2.5-.5.5h-1v-1z" fill="#FF6640" />
-    </svg>
-  )
-}
-
-export function GraphQLIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="GraphQL">
-      <g fill="#E10098">
-        <path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.3l7 3.9v7.6l-7 3.9-7-3.9V8.2l7-3.9z" />
-        <circle cx="12" cy="5" r="1.5" />
-        <circle cx="5" cy="9" r="1.5" />
-        <circle cx="19" cy="9" r="1.5" />
-        <circle cx="5" cy="15" r="1.5" />
-        <circle cx="19" cy="15" r="1.5" />
-        <circle cx="12" cy="19" r="1.5" />
-      </g>
-    </svg>
-  )
-}
-
-export function SystemDesignIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="System Design">
-      <g fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="3" y="3" width="7" height="5" rx="1" />
-        <rect x="14" y="3" width="7" height="5" rx="1" />
-        <rect x="3" y="16" width="7" height="5" rx="1" />
-        <rect x="14" y="16" width="7" height="5" rx="1" />
-        <path d="M6.5 8v3.5h11M17.5 8v3.5M6.5 16v-4.5M17.5 16v-4.5" strokeLinecap="round" />
-      </g>
-    </svg>
-  )
-}
-
-export function PostgresIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="PostgreSQL">
-      <path d="M19 11c-.2-1-.8-1.8-1.7-2.2.3-1.5.1-3-.6-4.3-.7-1.3-2-2-3.7-2-1.2 0-2.5.4-3.7 1.1-.5.3-1 .6-1.4 1-1 .2-2 .7-2.7 1.5-1.2 1.3-1.7 3.2-1.4 5.4.1.7.3 1.4.6 2-.3 1-.4 2.1-.3 3.2.2 2.2 1.1 4 2.5 5.1 1 .8 2.2 1.2 3.4 1.2.4 0 .8 0 1.2-.1.5.4 1.1.6 1.7.6 1.5 0 2.8-.8 3.6-2.2.5-.9.7-2 .6-3.2 1.2-.8 2-2 2.3-3.5.2-1.2.1-2.4-.4-3.4z" fill="#4169E1" />
-      <path d="M16 13c-.5-.2-1-.3-1.5-.2.2-.4.3-.9.3-1.4 0-.7-.1-1.3-.4-1.9.3-.5.4-1.1.4-1.7 0-1.5-.8-2.7-2-2.7-.5 0-1 .2-1.4.5-.7-.2-1.5-.1-2.2.3-.7.4-1.2 1-1.5 1.7-.7.1-1.3.5-1.7 1.1-.5.7-.7 1.6-.5 2.6.1.5.3 1 .6 1.4-.3.6-.4 1.3-.3 2 .1.7.4 1.3.9 1.7.4.4 1 .6 1.6.6.3 0 .6 0 .9-.1.4.5 1 .8 1.7.8.8 0 1.5-.4 2-1.1.4.2.9.3 1.4.3.8 0 1.5-.4 2-1.1.4-.6.5-1.4.3-2.2-.2-.5-.5-.9-.9-1.2z" fill="white" opacity="0.3" />
-    </svg>
-  )
-}
-
-export function MongodbIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="MongoDB">
-      <path d="M12 2c-1 3-3 5-3 8 0 2 1 4 3 5 2-1 3-3 3-5 0-3-2-5-3-8zm0 14c-1 0-2 .5-2 1.5 0 1.5 1 3 2 4.5 1-1.5 2-3 2-4.5 0-1-1-1.5-2-1.5z" fill="#47A248" />
-      <path d="M11.5 4c-.3 2-1.3 3.5-1.3 5.5 0 1.5.8 2.8 1.8 3.5V4h-.5zM12 16c-.5 0-1 .3-1 1 0 1 .5 2 1 3v-4z" fill="#00684A" />
-    </svg>
-  )
-}
-
-export function MysqlIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="MySQL">
-      <path d="M5 10c-1 0-2 .5-2.5 1.5.5-.2 1-.3 1.5 0 .5.3.5 1 .2 1.5-.3.5-1 .7-1.5.5-.5-.2-.8-.7-.8-1.3 0-1.3 1-2.5 2.3-2.7.3 0 .5 0 .8.2zm12 2c-.5-.2-1 0-1.3.5-.3.5-.2 1.2.3 1.5.5.3 1.2.2 1.5-.3.3-.5.2-1.2-.3-1.5-.1-.1-.2-.2-.2-.2zm-7-1c-.3-.2-.7-.2-1 0-.3.2-.5.5-.5.8 0 .3.2.7.5.8.3.2.7.2 1 0 .3-.2.5-.5.5-.8 0-.3-.2-.7-.5-.8zm9-3c-1.5 0-3 .5-4 1.5.5-.2 1-.3 1.5-.3 1.5 0 2.5 1 2.5 2.5 0 .5-.2 1-.5 1.5 1-.5 1.5-1.5 1.5-2.5 0-1.5-1-2.7-2.5-2.7z" fill="#4479A1" />
-    </svg>
-  )
-}
-
-export function RedisIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Redis">
-      <path d="M12 4L3 8l9 4 9-4-9-4zM3 12l9 4 9-4M3 16l9 4 9-4" stroke="#DC382D" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
-      <path d="M12 4L3 8l9 4 9-4-9-4z" fill="#DC382D" opacity="0.2" />
-    </svg>
-  )
-}
-
-export function FirebaseIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Firebase">
-      <path d="M5 19l2-13 4 8-2 5zM9 6l3 11 4-2-5-9zM14 8l3 9 2-2-5-7z" fill="#FFCA28" />
-      <path d="M5 19l2-13 4 8-2 5z" fill="#FFA000" />
-    </svg>
-  )
-}
-
-export function PrismaIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Prisma ORM">
-      <path d="M20 4L4 20l8-2 8-14zM12 18l-6 2 6-10v8z" fill="#2D3748" />
-      <path d="M20 4L4 20l8-2 8-14z" fill="#5A67D8" opacity="0.7" />
-    </svg>
-  )
-}
-
-export function GitIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Git & GitHub">
-      <path d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.4-2.2-.3-4.5-1.1-4.5-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.5 5 .3.3.6.9.6 1.8v2.7c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12c0-5.5-4.5-10-10-10z" fill="#F05032" />
-    </svg>
-  )
-}
-
-export function DockerIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Docker">
-      <path d="M3 11h2v2H3V11zm2.5 0h2v2h-2v-2zm2.5 0h2v2H8v-2zm2.5 0h2v2h-2v-2zm0-2.5h2v2h-2v-2zm2.5 2.5h2v2H13v-2zm2.5 0h2v2h-2v-2zm0-2.5h2v2h-2v-2zm0-2.5h2v2h-2v-2zM21 12c-.5-.3-1.5-.4-2.2-.2-.1-.8-.6-1.5-1.3-2l-.5-.3.5-.4c.8-.8.8-2 0-2.8-.4-.4-1-.6-1.5-.6s-1.1.2-1.5.6l1 1c.2.2.3.4.3.7 0 .3-.1.5-.3.7-.4.4-1 .4-1.4 0l-1-1c-.4.4-.6 1-.6 1.5 0 .6.2 1.1.6 1.5l.4.4-.3.5c-.4.6-.5 1.3-.4 2H21z" fill="#2496ED" />
-    </svg>
-  )
-}
-
-export function AwsIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="AWS">
-      <path d="M3 12c0-1.5.5-2.5 1.5-2.5.8 0 1.3.5 1.5 1.5l1-.3c-.2-1.5-1.2-2.5-2.5-2.5C3 8.2 2 9.8 2 12s1 3.8 2.5 3.8c1.3 0 2.3-1 2.5-2.5l-1-.3c-.2 1-.7 1.5-1.5 1.5-1 0-1.5-1-1.5-2.5zm5-3.5h1v7H8v-7zm3 0h1v7h-1v-7zm3 0h1v7h-1v-7zm3 0h1v7h-1v-7zm3 0h1v7h-1v-7z" fill="#FF9900" />
-    </svg>
-  )
-}
-
-export function VercelIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Vercel">
-      <path d="M12 3L3 19h18L12 3z" fill="currentColor" />
-    </svg>
-  )
-}
-
-export function VscodeIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="VS Code">
-      <path d="M5 3l14 6v6L5 21V3zm2 3v12l10-4V10L7 6z" fill="#007ACC" />
-      <path d="M7 6l10 4v4L7 18V6z" fill="#1E9EFF" opacity="0.5" />
-    </svg>
-  )
-}
-
-export function PostmanIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Postman">
-      <circle cx="12" cy="12" r="10" fill="#FF6C37" />
-      <path d="M15 8l-5 5c-.3.3-.3.7 0 1l1 1c.3.3.7.3 1 0l5-5-2-2zM9 13l-2 2c-.2.2-.2.5 0 .7l.3.3c.2.2.5.2.7 0l2-2-1-1z" fill="white" />
-    </svg>
-  )
-}
-
-export function FigmaIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="Figma">
-      <path d="M9 3h3v6H9c-1.7 0-3-1.3-3-3s1.3-3 3-3z" fill="#F24E1E" />
-      <path d="M12 3h3c1.7 0 3 1.3 3 3s-1.3 3-3 3h-3V3z" fill="#FF7262" />
-      <path d="M9 9h3v6H9c-1.7 0-3-1.3-3-3s1.3-3 3-3z" fill="#A259FF" />
-      <path d="M12 9h3c1.7 0 3 1.3 3 3s-1.3 3-3 3h-3V9z" fill="#1ABCFE" />
-      <path d="M9 15h3v3c0 1.7-1.3 3-3 3s-3-1.3-3-3 1.3-3 3-3z" fill="#0ACF83" />
-    </svg>
-  )
-}
-
-export function CicdIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="CI/CD">
-      <g fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M4 8h10M4 8l3-3M4 8l3 3" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M20 16H10M20 16l-3-3M20 16l-3 3" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="17" cy="8" r="2" />
-        <circle cx="7" cy="16" r="2" />
-      </g>
-    </svg>
-  )
-}
-
-export function ReactRouterIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="React Router" fill="currentColor">
-      <path d="M12 0L2.24 5.63v11.27L12 22.5l9.76-5.6V5.63L12 0zm0 3.16l6.98 4.02-2.3 1.33-4.68-2.7-4.68 2.7-2.3-1.33L12 3.16zm0 2.24l2.38 1.37-2.38 1.38-2.38-1.38L12 5.4zm-4.68 2.7l4.68 2.7 4.68-2.7 2.3 1.33L12 11.16l-6.98-4.03 2.3-1.33zm0 2.7l4.68 2.7 4.68-2.7 2.3 1.33L12 13.86l-6.98-4.03 2.3-1.33zM5.02 14.33l2.3-1.33 4.68 2.7 4.68-2.7 2.3 1.33L12 18.36l-6.98-4.03z" />
-    </svg>
-  )
-}
-
-export function TanStackIcon(props: IconProps) {
-  return (
-    <svg {...base(props)} aria-label="TanStack" fill="currentColor">
-      <path d="M11.078.042c.316-.042.65-.014.97-.014 1.181 0 2.341.184 3.472.532a12.3 12.3 0 0 1 3.973 2.086 11.9 11.9 0 0 1 3.432 4.33c1.446 3.15 1.436 6.97-.046 10.107-.958 2.029-2.495 3.727-4.356 4.965-1.518 1.01-3.293 1.629-5.1 1.848-2.298.279-4.784-.129-6.85-1.188-3.88-1.99-6.518-5.994-6.57-10.382-.01-.846.003-1.697.17-2.534.273-1.365.748-2.683 1.463-3.88a12 12 0 0 1 2.966-3.36A12.3 12.3 0 0 1 9.357.3a12 12 0 0 1 1.255-.2l.133-.016zM7.064 19.99c-.535.057-1.098.154-1.557.454.103.025.222 0 .33 0 .258 0 .52-.01.778.002.647.028 1.32.131 1.945.303.8.22 1.505.65 2.275.942.813.307 1.622.402 2.484.402.435 0 .866-.001 1.287-.12-.22-.117-.534-.095-.778-.144a11 11 0 0 1-1.556-.416 12 12 0 0 1-1.093-.467l-.23-.108a15 15 0 0 0-1.012-.44c-.905-.343-1.908-.512-2.873-.408m.808-2.274c-1.059 0-2.13.187-3.083.667q-.346.177-.659.41c-.063.046-.175.106-.199.188s.061.151.11.204c.238-.127.464-.261.718-.357 1.64-.624 3.63-.493 5.268.078.817.285 1.569.712 2.365 1.046.89.374 1.798.616 2.753.74 1.127.147 2.412.028 3.442-.48.362-.179.865-.451 1.018-.847-.189.017-.36.098-.539.154a9 9 0 0 1-.868.222c-.994.2-2.052.24-3.053.06-.943-.17-1.82-.513-2.693-.873l-.111-.046-.223-.092-.112-.046a26 26 0 0 0-1.35-.527c-.89-.31-1.842-.5-2.784-.5M9.728 1.452c-1.27.28-2.407.826-3.502 1.514-.637.4-1.245.81-1.796 1.323-.82.765-1.447 1.695-1.993 2.666-.563 1-.924 2.166-1.098 3.297-.172 1.11-.2 2.277-.004 3.388.245 1.388.712 2.691 1.448 3.897.248-.116.424-.38.629-.557.414-.359.85-.691 1.317-.978a3.5 3.5 0 0 1 .539-.264c.07-.029.187-.055.22-.132.053-.124-.045-.34-.062-.468a7 7 0 0 1-.068-1.109 9.7 9.7 0 0 1 .61-3.177c.29-.76.73-1.45 1.254-2.069.177-.21.365-.405.56-.6.115-.114.258-.212.33-.359-.376 0-.751.108-1.108.218-.769.237-1.518.588-2.155 1.084-.291.226-.504.522-.779.76-.084.073-.235.17-.352.116-.176-.083-.149-.43-.169-.59-.078-.612.154-1.387.45-1.918.473-.852 1.348-1.58 2.376-1.555.444.011.833.166 1.257.266-.107-.153-.252-.264-.389-.39a5.4 5.4 0 0 0-1.107-.8c-.163-.085-.338-.136-.509-.2-.086-.03-.195-.074-.227-.17-.06-.177.26-.342.377-.417.453-.289 1.01-.527 1.556-.54.854-.021 1.688.452 2.04 1.258.123.284.16.583.184.885l.004.057.006.085.002.029.005.057.004.056c.268-.218.457-.54.718-.774.612-.547 1.45-.79 2.245-.544a2.97 2.97 0 0 1 1.71 1.378c.097.173.365.595.171.767-.152.134-.344.03-.504-.026a3 3 0 0 0-.372-.094l-.068-.014-.069-.013a3.9 3.9 0 0 0-1.377-.002c-.282.05-.557.15-.838.192v.06c.768.006 1.51.444 1.89 1.109.157.275.235.59.295.9.075.38.022.796-.082 1.168-.035.125-.098.336-.247.365-.106.02-.195-.085-.256-.155a4.6 4.6 0 0 0-.492-.522 20 20 0 0 0-1.467-1.14c-.267-.19-.56-.44-.868-.556.087.208.171.402.2.63.088.667-.192 1.296-.612 1.798a2.6 2.6 0 0 1-.426.427c-.067.05-.151.114-.24.1-.277-.044-.31-.463-.353-.677-.144-.726-.086-1.447.114-2.158-.178.09-.307.287-.418.45a5.3 5.3 0 0 0-.612 1.138c-.61 1.617-.604 3.51.186 5.066.088.174.221.15.395.15h.157a3 3 0 0 1 .472.018c.08.01.193 0 .257.06.077.072.036.194.018.282-.05.246-.066.469-.066.72.328-.051.419-.576.535-.84.131-.298.265-.597.387-.9.06-.148.14-.314.119-.479-.024-.185-.157-.381-.25-.54-.177-.298-.378-.606-.508-.929-.104-.258-.007-.58.286-.672.161-.05.334.049.439.166.22.244.363.609.523.896l1.249 2.248q.159.286.32.57c.043.074.086.188.173.219.077.028.182-.012.26-.027.198-.04.398-.083.598-.12.24-.043.605-.035.778-.222-.253-.08-.545-.075-.808-.057-.158.01-.333.067-.479-.025-.216-.137-.36-.455-.492-.667-.326-.525-.633-1.057-.945-1.59l-.05-.084-.1-.17q-.075-.126-.149-.255c-.037-.066-.092-.153-.039-.227.056-.076.179-.08.29-.081h.021q.066.001.117-.004a10 10 0 0 1 1.347-.107c-.035-.122-.135-.26-.103-.39.071-.292.49-.383.686-.174.131.14.207.334.292.504.113.223.24.44.361.66.211.383.441.757.658 1.138l.055.094.028.047c.093.156.187.314.238.489-.753-.035-1.318-.909-1.646-1.499-.027.095.016.179.05.27q.103.282.262.54c.152.244.326.495.556.673.408.315.945.317 1.436.283.315-.022.708-.165 1.018-.068s.434.438.25.7c-.138.196-.321.27-.55.3.162.346.373.667.527 1.02.064.146.13.37.283.448.102.051.248.003.358 0-.11-.292-.317-.54-.419-.839.31.015.61.176.898.28.567.202 1.128.424 1.687.648l.258.104c.23.092.462.183.689.283.083.037.198.123.29.07.074-.043.123-.146.169-.215a10.3 10.3 0 0 0 1.393-3.208c.75-2.989.106-6.287-1.695-8.783-.692-.96-1.562-1.789-2.522-2.476-2.401-1.718-5.551-2.407-8.44-1.768m4.908 14.904c-.636.166-1.292.317-1.945.401.086.293.296.577.45.84.059.101.122.237.24.281.132.05.292-.03.417-.072-.058-.158-.155-.3-.235-.45-.033-.06-.084-.133-.056-.206.05-.137.263-.13.381-.153.31-.063.617-.142.928-.204.114-.023.274-.085.389-.047.086.03.138.1.187.174l.022.033q.043.07.097.122c.125.113.313.13.472.162-.097-.219-.259-.41-.362-.63-.06-.127-.11-.315-.242-.388-.182-.102-.557.089-.743.137m-4.01-1.457c-.03.38-.147.689-.33 1.019.21.026.423.036.629.087.154.038.296.11.449.153-.082-.224-.233-.423-.35-.63-.12-.208-.226-.462-.398-.63" />
-    </svg>
-  )
-}
+import {
+  Coffee,
+  Network,
+  Workflow,
+  Infinity,
+  Cloud,
+} from "lucide-react"
 
 export const techIcons = {
-  React: ReactIcon,
-  "Next.js": NextJsIcon,
-  TypeScript: TypeScriptIcon,
-  "Tailwind CSS": TailwindIcon,
-  "HTML / CSS": HtmlCssIcon,
-  "React Query": ReactQueryIcon,
-  "Tanstack Router": TanStackIcon,
-  "React Router": ReactRouterIcon,
-  "Node.js": NodeJsIcon,
-  Express: ExpressIcon,
-  "Spring Boot": SpringBootIcon,
-  Java: JavaIcon,
-  Kotlin: KotlinIcon,
-  "REST APIs": RestApiIcon,
-  GraphQL: GraphQLIcon,
-  "System Design": SystemDesignIcon,
-  PostgreSQL: PostgresIcon,
-  MongoDB: MongodbIcon,
-  MySQL: MysqlIcon,
-  Redis: RedisIcon,
-  Firebase: FirebaseIcon,
-  "Prisma ORM": PrismaIcon,
-  "Git & GitHub": GitIcon,
-  Docker: DockerIcon,
-  AWS: AwsIcon,
-  Vercel: VercelIcon,
-  "VS Code": VscodeIcon,
-  Postman: PostmanIcon,
-  Figma: FigmaIcon,
-  "CI/CD": CicdIcon,
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  TypeScript: SiTypescript,
+  JavaScript: SiJavascript,
+  "Tailwind CSS": SiTailwindcss,
+  "Shadcn UI": SiShadcnui,
+  "HTML / CSS": SiHtml5,
+  "React Query": SiReactquery,
+  "Tanstack Router": SiTanstack,
+  "React Router": SiReactrouter,
+  "Node.js": SiNodedotjs,
+  NestJs: SiNestjs,
+  Express: SiExpress,
+  "Spring Boot": SiSpringboot,
+  Java: Coffee,
+  Kotlin: SiKotlin,
+  "REST APIs": Network,
+  GraphQL: SiGraphql,
+  "System Design": Workflow,
+  PostgreSQL: SiPostgresql,
+  MongoDB: SiMongodb,
+  MySQL: SiMysql,
+  Redis: SiRedis,
+  Firebase: SiFirebase,
+  TypeORM: SiTypeorm,
+  BullMQ: LuDatabase,
+  "Git & GitHub": SiGit,
+  Docker: SiDocker,
+  Jest: SiJest,
+  Vercel: SiVercel,
+  "VS Code": SiVscodium, // VS Code uses SiVscodium from react-icons/si
+  Postman: SiPostman,
 } as const
 
 export type TechIconName = keyof typeof techIcons
