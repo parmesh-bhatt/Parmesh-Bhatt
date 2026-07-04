@@ -14,41 +14,37 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    role: "Software Developer Engineer",
-    company: "Company Name",
-    period: "Jun 2023 – Present",
+    role: "Web App Developer",
+    company: "Weetech Solution Private Limited",
+    period: "December 2025 – Present",
     type: "Full-time",
     description: [
-      "Developed enterprise-level web applications using React and Spring Boot, handling both frontend and backend components.",
-      "Led architecture decisions for core product features, improving performance by 40%.",
-      "Collaborated with product and design teams to deliver scalable, user-centric solutions.",
-      "Mentored junior developers and conducted regular code reviews.",
+      "Delivered scalable backend APIs with NestJS and Express, supporting multiple application features, by designing relational schemas and migrations using TypeORM and PostgreSQL.",
+      "Improved deployment reliability and code maintainability, reducing environment-related issues, by containerizing services with Docker and following clean TypeScript and Git- based workflows.",
     ],
-    tech: ["React", "TypeScript", "Spring Boot", "PostgreSQL", "Docker"],
+    tech: ["TypeScript", "Node.js", "NestJS", "Express", "PostgreSQL", "Docker", "TypeORM", "Redis", "BullMQ", "class-transformer", "class-validator", "Jest"],
   },
   {
-    role: "Junior Full Stack Developer",
-    company: "Company Name",
-    period: "Jan 2022 – May 2023",
-    type: "Full-time",
-    description: [
-      "Built responsive user interfaces using React and integrated RESTful APIs for live data.",
-      "Optimized application performance, reducing load times by 30%.",
-      "Participated in agile ceremonies, sprint planning, and code reviews.",
-    ],
-    tech: ["React", "Node.js", "MongoDB", "Express", "AWS"],
-  },
-  {
-    role: "Full Stack Developer",
-    company: "Company Name",
-    period: "Jun 2021 – Dec 2021",
+    role: "Web Developer (Internship)",
+    company: "Wappzo Infotech Private Limited",
+    period: "August 2025 - November 2025",
     type: "Internship",
     description: [
-      "Developed and maintained resume builder web applications.",
-      "Integrated third-party APIs and services to extend product functionality.",
-      "Optimized application performance and fixed critical production bugs.",
+      "Refreshed and strengthened MERN stack fundamentals by learning HTML, CSS, and Tailwind CSS in the first 20 days, and built 2+ responsive websites(one using HTML & CSS and another using HTML & Tailwind CSS) to ensure cross-device compatibility.",
+      "Enhanced front-end development expertise by deepening skills in TypeScript and React, exploring Next.js for modern web applications, and currently focusing on learning React Native for cross-platform mobile development.",
     ],
-    tech: ["React", "Node.js", "MySQL", "Tailwind CSS"],
+    tech: ["Next.js", "React", "Tailwind CSS", "TypeScript", "PostgreSQL", "RESTful APIs"],
+  },
+  {
+    role: "Software Developer (Internship)",
+    company: "Liquify Solutions",
+    period: "December 2024 – May 2025",
+    type: "Internship",
+    description: [
+      "Developed and maintained 2 web applications as a part of a 4-member team using React and Spring Boot, reduced page load times by 30 % by using Tanstack Router, Tanstack Query, and data fetching techniques.",
+      "Improved code quality and maintainability by participating in bi-weekly code reviews, sprint planning, and implementing best practices across two web apps.",
+    ],
+    tech: ["React", "Tanstack Query", "Tanstack Router", "Tailwind CSS", "Spring Boot", "Kotlin", "PostgreSQL"],
   },
 ]
 
