@@ -20,7 +20,6 @@ import {
   SiDocker,
   SiVercel,
   SiPostman,
-  SiFigma,
   SiVscodium,
   SiTanstack,
   SiShadcnui,
@@ -36,8 +35,6 @@ import {
   Coffee,
   Network,
   Workflow,
-  Infinity,
-  Cloud,
 } from "lucide-react"
 
 export const techIcons = {

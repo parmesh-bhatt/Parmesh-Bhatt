@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { GitBranch, ExternalLink } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
@@ -11,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { SectionHeading } from "@/components/SectionHeading"
+import { LinkNotFoundModal } from "@/components/LinkNotFoundModal"
 
 interface Project {
   title: string
@@ -26,49 +28,60 @@ const projects: Project[] = [
     description:
       "RitualPlanner is a powerful web-based tool designed for priests to efficiently manage their daily religious tasks. From scheduling rituals and tracking clients to handling payments and reminders, it brings complete organization to every aspect of religious service management.",
     tech: ["React", "Tanstack Router", "Tanstack Query", "Tailwind CSS", "Shadcn UI", "Node.js", "NestJs", "PostgreSQL", "Redis", "TypeOrm", "JWT", "Passport.js", "BullMQ", "class-transformer", "class-validator", "Jest"],
-    github: "",
+    github: "https://github.com/RitualPlanner",
     live: "",
   },
   {
     title: "RitualPanchang",
     description:
       "RitualPanchang is a comprehensive web-based tool that provides accurate and localized panchangam information. It helps priests and individuals plan religious observances with precise timings for tithis, nakshatras, yogas, and other Vedic astrological data.",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "WebSockets"],
-    github: "https://github.com",
-    live: "https://example.com",
+    tech: ["React", "Tanstack Router", "Tanstack Query", "Tailwind CSS", "Shadcn UI", "Node.js", "NestJs", "PostgreSQL", "Redis", "TypeOrm", "JWT", "Passport.js", "BullMQ", "class-transformer", "class-validator", "Jest"],
+    github: "https://github.com/RitualPanchang",
+    live: "",
   },
   {
-    title: "Dev Blog Platform",
+    title: "Furniture Rentals",
     description:
-      "A blogging platform tailored for developers with Markdown support, syntax highlighting, SEO optimization, and a clean reading experience.",
-    tech: ["Next.js", "MDX", "Tailwind CSS", "Contentlayer"],
-    github: "https://github.com",
+      "Furniture Rentals is a web-based platform for online furniture rental services, allowing customers to browse items, manage subscriptions, track orders, and make secure payments. This platform aims to simplify the process of renting furniture with a digitized solution.",
+    tech: ["React", "Node.js", "Express.js", "Tailwind CSS", "Razorpay", "MongoDB"],
+    github: "https://github.com/parmesh-bhatt/Furniture-Rentals",
+    live: "https://furniture-renting-client.onrender.com/"
   },
   {
-    title: "REST API Gateway",
+    title: "Bug Tracking System",
     description:
-      "A scalable API gateway service with built-in rate limiting, JWT authentication, request routing, and detailed logging.",
-    tech: ["Node.js", "Express", "Redis", "Docker", "TypeScript"],
-    github: "https://github.com",
+      "The Bug Tracking System is a web-based project I developed to streamline the software development lifecycle by efficiently managing and tracking defects across various projects. It features multi-user roles, detailed reporting, and project organization functionalities, demonstrating my ability to build robust data-management applications.",
+    tech: ["Node.js", "Express", "MongoDB", "JWT", "Passport.js"],
+    github: "",
   },
   {
-    title: "Analytics Dashboard",
+    title: "TMS - Transport Management System",
     description:
-      "A data visualization dashboard with real-time charts, KPI tracking, filterable reports, and a responsive grid layout.",
-    tech: ["React", "TypeScript", "Recharts", "PostgreSQL", "ShadcnUI"],
-    github: "https://github.com",
-    live: "https://example.com",
+      "The Transport Management System (TMS) is a web-based platform that streamlines logistics operations by managing vehicles, drivers, and shipments. It enables efficient transport assignment, delivery tracking, and centralized monitoring through an admin dashboard. Customers and businesses can also track their deliveries in real time.",
+    tech: ["React", "Tailwind CSS", "Spring Boot", "Kotlin", "Keycloak", "PostgreSQL", "Docker"],
+    github: "https://github.com/parmesh-bhatt/TMS",
+    live: ""
   },
   {
-    title: "CLI Productivity Tool",
+    title: "Medical Chatbot",
     description:
-      "A developer productivity CLI tool published to NPM. Automates repetitive setup tasks with configurable templates and scripts.",
-    tech: ["Node.js", "TypeScript", "npm", "Commander.js"],
-    github: "https://github.com",
-  },
+      "This whole ChatBot we created to learn and our main motive is to digitalize the medical field because India is very behind in medical technologies. The big cities have many facilities but small village people cannot go to big cities and afford the cost. With the use of these ChatBots, if they have small smartphones they can easily get the solution to small diseases and get the answer from their home.",
+    tech: ["Telegram", "Dialogflow"],
+    github: "https://github.com/parmesh-bhatt/Medical-Chatbot",
+  }
 ]
 
 export default function Projects() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedProjectTitle, setSelectedProjectTitle] = useState("")
+  const [selectedLinkType, setSelectedLinkType] = useState<"github" | "live">("github")
+
+  const handleUnavailableLink = (title: string, type: "github" | "live") => {
+    setSelectedProjectTitle(title)
+    setSelectedLinkType(type)
+    setModalOpen(true)
+  }
+
   return (
     <section id="projects" className="py-24 px-4 bg-muted/30">
       <div className="mx-auto max-w-6xl">
@@ -116,13 +129,26 @@ export default function Projects() {
                 </CardContent>
 
                 <CardFooter className="gap-2 pt-0">
-                  <Button variant="outline" size="sm" className="cursor-pointer" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                  {project.github ? (
+                    <Button variant="outline" size="sm" className="cursor-pointer" asChild>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <GitBranch className="h-3.5 w-3.5" />
+                        Code
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="cursor-pointer"
+                      onClick={() => handleUnavailableLink(project.title, "github")}
+                    >
                       <GitBranch className="h-3.5 w-3.5" />
                       Code
-                    </a>
-                  </Button>
-                  {project.live && (
+                    </Button>
+                  )}
+
+                  {project.live ? (
                     <Button
                       size="sm"
                       className="bg-highlight text-highlight-foreground hover:bg-highlight/90 cursor-pointer"
@@ -133,6 +159,15 @@ export default function Projects() {
                         Live
                       </a>
                     </Button>
+                  ) : (
+                    <Button
+                      size="sm"
+                      className="bg-highlight text-highlight-foreground hover:bg-highlight/90 cursor-pointer"
+                      onClick={() => handleUnavailableLink(project.title, "live")}
+                    >
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      Live
+                    </Button>
                   )}
                 </CardFooter>
               </Card>
@@ -140,6 +175,13 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      <LinkNotFoundModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        projectTitle={selectedProjectTitle}
+        linkType={selectedLinkType}
+      />
     </section>
   )
 }
