@@ -6,7 +6,7 @@ const facts = [
   { label: "Experience", value: "1+ Years" },
   { label: "Projects", value: "5+" },
   { label: "Technologies", value: "10+" },
-  { label: "Contributions", value: "10+" },
+  { label: "Contributions", value: "50+" },
 ]
 
 export default function About() {
