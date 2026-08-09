@@ -89,12 +89,7 @@ const childVariants = {
   },
 }
 
-const roles = [
-  "Software Engineer",
-  "Product Builder",
-  "System Designer",
-  "Problem Solver",
-]
+const roles = ["Software Engineer", "Product Builder", "System Designer", "Problem Solver"]
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
@@ -177,11 +172,7 @@ export default function Hero() {
               className="text-xl md:text-2xl font-medium text-muted-foreground flex justify-center"
             >
               {roles[roleIndex].split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  variants={childVariants}
-                  className="inline-block"
-                >
+                <motion.span key={index} variants={childVariants} className="inline-block">
                   {char === " " ? "\u00A0" : char}
                 </motion.span>
               ))}
@@ -196,7 +187,8 @@ export default function Hero() {
           transition={spring(0.5)}
           className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-7"
         >
-          Passionate about crafting meaningful, scalable, and beautifully designed software that simplifies real-world challenges—blending modern technology with purposeful impact.
+          Passionate about crafting meaningful, scalable, and beautifully designed software that
+          simplifies real-world challenges—blending modern technology with purposeful impact.
         </motion.p>
 
         {/* CTAs */}
@@ -216,7 +208,12 @@ export default function Hero() {
             </Button>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-            <Button size="lg" variant="outline" className="cursor-pointer" onClick={() => scrollTo("contact")}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="cursor-pointer"
+              onClick={() => scrollTo("contact")}
+            >
               <Mail className="h-4 w-4" />
               Get In Touch
             </Button>
@@ -240,7 +237,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={spring(0.82 + i * 0.08)}
-              whileHover={{ scale: 1.15, transition: { type: "spring", stiffness: 300, damping: 15 } }}
+              whileHover={{
+                scale: 1.15,
+                transition: { type: "spring", stiffness: 300, damping: 15 },
+              }}
               className="text-muted-foreground hover:text-highlight transition-colors duration-200"
             >
               <Icon className="h-5 w-5" />

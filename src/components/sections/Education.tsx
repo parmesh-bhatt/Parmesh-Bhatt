@@ -40,10 +40,7 @@ export default function Education() {
   return (
     <section id="education" className="py-24 px-4">
       <div className="mx-auto max-w-4xl">
-        <SectionHeading
-          title="Education"
-          subtitle="My academic background and qualifications."
-        />
+        <SectionHeading title="Education" subtitle="My academic background and qualifications." />
 
         <div className="space-y-6">
           {educationItems.map((edu, i) => (
@@ -80,9 +77,7 @@ export default function Education() {
                     <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">
                       {edu.degree}
                     </h3>
-                    <p className="text-highlight text-sm font-medium mt-0.5">
-                      {edu.institution}
-                    </p>
+                    <p className="text-highlight text-sm font-medium mt-0.5">{edu.institution}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5 text-sm text-muted-foreground shrink-0">
@@ -91,9 +86,7 @@ export default function Education() {
                 </div>
               </div>
 
-              <p className="text-sm text-muted-foreground leading-6 mb-4">
-                {edu.description}
-              </p>
+              <p className="text-sm text-muted-foreground leading-6 mb-4">{edu.description}</p>
 
               <div className="flex flex-wrap gap-2">
                 {edu.highlights.map((item) => (

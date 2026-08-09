@@ -14,7 +14,7 @@ import { Toaster } from "@/components/ui/sonner"
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false)
-  
+
   // Framer Motion Scroll Progress
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {

@@ -9,7 +9,12 @@ interface LinkNotFoundModalProps {
   linkType: "github" | "live"
 }
 
-export function LinkNotFoundModal({ isOpen, onClose, projectTitle, linkType }: LinkNotFoundModalProps) {
+export function LinkNotFoundModal({
+  isOpen,
+  onClose,
+  projectTitle,
+  linkType,
+}: LinkNotFoundModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -52,7 +57,8 @@ export function LinkNotFoundModal({ isOpen, onClose, projectTitle, linkType }: L
                 </h3>
                 <p className="text-sm text-muted-foreground leading-6 px-2">
                   The {linkType === "github" ? "GitHub repository" : "live deployment link"} for{" "}
-                  <strong className="text-highlight font-semibold">{projectTitle}</strong> is currently not publicly available or is under active development.
+                  <strong className="text-highlight font-semibold">{projectTitle}</strong> is
+                  currently not publicly available or is under active development.
                 </p>
               </div>
 

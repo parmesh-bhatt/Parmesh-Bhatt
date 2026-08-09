@@ -17,7 +17,14 @@ function ResumeContent() {
             <span>your.email@example.com</span>
             <span>+1 (555) 000-0000</span>
             <span>Your City, Country</span>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-highlight-foreground transition-colors">github.com/yourhandle</a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-highlight-foreground transition-colors"
+            >
+              github.com/yourhandle
+            </a>
           </div>
         </div>
       </div>
@@ -26,9 +33,10 @@ function ResumeContent() {
         {/* Summary */}
         <section>
           <p className="text-sm leading-6 text-muted-foreground">
-            Full Stack Developer with 3+ years of experience building scalable, user-centric web applications.
-            Proficient in React, TypeScript, Node.js, and Spring Boot. Passionate about clean architecture,
-            performance optimization, and delivering polished digital experiences.
+            Full Stack Developer with 3+ years of experience building scalable, user-centric web
+            applications. Proficient in React, TypeScript, Node.js, and Spring Boot. Passionate
+            about clean architecture, performance optimization, and delivering polished digital
+            experiences.
           </p>
         </section>
 
@@ -36,7 +44,9 @@ function ResumeContent() {
         <section>
           <div className="flex items-center gap-2 mb-4">
             <Briefcase className="h-4 w-4 text-highlight" />
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Experience</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+              Experience
+            </h3>
           </div>
           <div className="space-y-5">
             {[
@@ -78,7 +88,10 @@ function ResumeContent() {
                 </div>
                 <ul className="mt-2 space-y-1">
                   {exp.points.map((pt, i) => (
-                    <li key={i} className="text-xs text-muted-foreground leading-5 flex items-start gap-1.5">
+                    <li
+                      key={i}
+                      className="text-xs text-muted-foreground leading-5 flex items-start gap-1.5"
+                    >
                       <span className="text-highlight mt-1 shrink-0">•</span>
                       {pt}
                     </li>
@@ -93,11 +106,16 @@ function ResumeContent() {
         <section>
           <div className="flex items-center gap-2 mb-4">
             <Code className="h-4 w-4 text-highlight" />
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Technical Skills</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+              Technical Skills
+            </h3>
           </div>
           <div className="space-y-2">
             {[
-              { label: "Frontend", value: "React, Next.js, TypeScript, Tailwind CSS, Framer Motion" },
+              {
+                label: "Frontend",
+                value: "React, Next.js, TypeScript, Tailwind CSS, Framer Motion",
+              },
               { label: "Backend", value: "Node.js, Express, Spring Boot, Java, Kotlin, GraphQL" },
               { label: "Database", value: "PostgreSQL, MongoDB, MySQL, Redis, Firebase" },
               { label: "Tools", value: "Git, Docker, AWS, CI/CD, Postman, Figma" },
@@ -114,7 +132,9 @@ function ResumeContent() {
         <section>
           <div className="flex items-center gap-2 mb-4">
             <GraduationCap className="h-4 w-4 text-highlight" />
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Education</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+              Education
+            </h3>
           </div>
           <div className="border-l-2 border-highlight/30 pl-4">
             <div className="flex items-start justify-between gap-4 flex-wrap">
@@ -125,9 +145,13 @@ function ResumeContent() {
               <p className="text-xs text-muted-foreground shrink-0">2019 – 2023</p>
             </div>
             <div className="flex flex-wrap gap-1.5 mt-2">
-              {["Data Structures", "Algorithms", "System Design", "Database Management"].map((s) => (
-                <Badge key={s} variant="outline" className="text-[10px] px-2 py-0">{s}</Badge>
-              ))}
+              {["Data Structures", "Algorithms", "System Design", "Database Management"].map(
+                (s) => (
+                  <Badge key={s} variant="outline" className="text-[10px] px-2 py-0">
+                    {s}
+                  </Badge>
+                )
+              )}
             </div>
           </div>
         </section>
@@ -205,11 +229,7 @@ export default function Resume() {
                   Full screen
                 </a>
               </div>
-              <iframe
-                src="/resume.pdf"
-                title="Resume"
-                className="w-full h-[750px] bg-muted"
-              />
+              <iframe src="/resume.pdf" title="Resume" className="w-full h-[750px] bg-muted" />
             </div>
           ) : (
             <ResumeContent />
@@ -223,7 +243,9 @@ export default function Resume() {
             transition={{ delay: 0.5 }}
             className="text-center text-xs text-muted-foreground mt-4"
           >
-            Place your <code className="bg-muted rounded px-1">resume.pdf</code> in the <code className="bg-muted rounded px-1">/public</code> folder to embed the actual PDF above.
+            Place your <code className="bg-muted rounded px-1">resume.pdf</code> in the{" "}
+            <code className="bg-muted rounded px-1">/public</code> folder to embed the actual PDF
+            above.
           </motion.p>
         )}
       </div>

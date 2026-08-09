@@ -26,16 +26,12 @@ import {
   SiJavascript,
   SiNestjs,
   SiTypeorm,
-  SiJest
+  SiJest,
 } from "react-icons/si"
 
 import { LuDatabase } from "react-icons/lu"
 
-import {
-  Coffee,
-  Network,
-  Workflow,
-} from "lucide-react"
+import { Coffee, Network, Workflow } from "lucide-react"
 
 export const techIcons = {
   React: SiReact,

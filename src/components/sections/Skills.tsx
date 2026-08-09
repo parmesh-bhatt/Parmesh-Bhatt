@@ -15,7 +15,8 @@ interface SkillGroup {
 const skillGroups: SkillGroup[] = [
   {
     category: "Frontend Development",
-    description: "Crafting pixel-perfect, responsive interfaces with modern frameworks and smooth animations.",
+    description:
+      "Crafting pixel-perfect, responsive interfaces with modern frameworks and smooth animations.",
     skills: [
       { name: "React" },
       { name: "Next.js" },
@@ -63,7 +64,7 @@ const skillGroups: SkillGroup[] = [
     skills: [
       { name: "Git & GitHub" },
       { name: "Docker" },
-      { name: 'Jest' },
+      { name: "Jest" },
       { name: "Vercel" },
       { name: "VS Code" },
       { name: "Postman" },
@@ -139,9 +140,7 @@ export default function Skills() {
                 <h3 className="scroll-m-20 text-base font-semibold tracking-tight text-highlight">
                   {group.category}
                 </h3>
-                <p className="text-xs text-muted-foreground leading-5">
-                  {group.description}
-                </p>
+                <p className="text-xs text-muted-foreground leading-5">{group.description}</p>
               </div>
 
               <motion.div
@@ -152,10 +151,7 @@ export default function Skills() {
                 className="flex flex-wrap gap-2"
               >
                 {group.skills.map((skill) => (
-                  <SkillBadge
-                    key={skill.name}
-                    skill={skill}
-                  />
+                  <SkillBadge key={skill.name} skill={skill} />
                 ))}
               </motion.div>
             </motion.div>

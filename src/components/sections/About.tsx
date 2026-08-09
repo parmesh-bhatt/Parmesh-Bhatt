@@ -28,9 +28,9 @@ export default function About() {
             className="flex justify-center"
           >
             <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl border-2 border-highlight/30 bg-muted flex items-center justify-center overflow-hidden">
-              <img 
-                src="/Parmesh_Bhatt.jpg" 
-                alt="Parmesh Bhatt" 
+              <img
+                src="/Parmesh_Bhatt.jpg"
+                alt="Parmesh Bhatt"
                 className="absolute inset-0 w-full h-full object-cover z-10"
               />
               <div className="flex flex-col items-center gap-3 text-muted-foreground">
@@ -49,17 +49,24 @@ export default function About() {
             transition={{ type: "spring", stiffness: 55, damping: 16, delay: 0.1 }}
             className="space-y-5"
           >
-            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-              Who I Am
-            </h3>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Who I Am</h3>
             <p className="leading-7 text-muted-foreground">
-              I'm a Software Engineer passionate about building software that solves real-world problems with simplicity, reliability, and thoughtful design. My journey has been driven by curiosity, continuous learning, and a desire to create products that people genuinely enjoy using.
+              I'm a Software Engineer passionate about building software that solves real-world
+              problems with simplicity, reliability, and thoughtful design. My journey has been
+              driven by curiosity, continuous learning, and a desire to create products that people
+              genuinely enjoy using.
             </p>
             <p className="leading-7 text-muted-foreground">
-              I focus on developing scalable, user-centered applications with clean architecture, maintainable code, and intuitive experiences. Whether I'm building a SaaS platform, designing APIs, or creating developer tools, I strive to balance functionality, performance, and usability.
+              I focus on developing scalable, user-centered applications with clean architecture,
+              maintainable code, and intuitive experiences. Whether I'm building a SaaS platform,
+              designing APIs, or creating developer tools, I strive to balance functionality,
+              performance, and usability.
             </p>
             <p className="leading-7 text-muted-foreground">
-              Beyond writing code, I enjoy exploring emerging technologies, refining my engineering practices, and contributing to the developer community. I believe great software isn't just about technology—it's about making people's work easier, more organized, and more meaningful.
+              Beyond writing code, I enjoy exploring emerging technologies, refining my engineering
+              practices, and contributing to the developer community. I believe great software isn't
+              just about technology—it's about making people's work easier, more organized, and more
+              meaningful.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">

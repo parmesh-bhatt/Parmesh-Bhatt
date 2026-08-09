@@ -3,13 +3,7 @@ import { Menu } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 
 const FULL_NAME = "Parmesh Bhatt"
@@ -74,9 +68,7 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-background border-b border-border shadow-sm"
-          : "bg-transparent"
+        scrolled ? "bg-background border-b border-border shadow-sm" : "bg-transparent"
       )}
     >
       <nav className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">

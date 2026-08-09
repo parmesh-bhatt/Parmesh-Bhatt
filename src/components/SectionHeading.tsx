@@ -6,11 +6,7 @@ interface SectionHeadingProps {
   align?: "left" | "center"
 }
 
-export function SectionHeading({
-  title,
-  subtitle,
-  align = "center",
-}: SectionHeadingProps) {
+export function SectionHeading({ title, subtitle, align = "center" }: SectionHeadingProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24, scale: 0.98 }}
@@ -19,9 +15,7 @@ export function SectionHeading({
       transition={{ type: "spring", stiffness: 60, damping: 15 }}
       className={align === "center" ? "text-center mb-14" : "mb-14"}
     >
-      <h2 className="scroll-m-20 text-3xl font-bold tracking-tight mb-3">
-        {title}
-      </h2>
+      <h2 className="scroll-m-20 text-3xl font-bold tracking-tight mb-3">{title}</h2>
       <div
         className={`h-1 w-10 rounded-full bg-highlight mb-4 ${align === "center" ? "mx-auto" : ""}`}
       />

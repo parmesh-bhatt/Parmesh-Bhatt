@@ -22,7 +22,20 @@ const experiences: ExperienceItem[] = [
       "Delivered scalable backend APIs with NestJS and Express, supporting multiple application features, by designing relational schemas and migrations using TypeORM and PostgreSQL.",
       "Improved deployment reliability and code maintainability, reducing environment-related issues, by containerizing services with Docker and following clean TypeScript and Git- based workflows.",
     ],
-    tech: ["TypeScript", "Node.js", "NestJS", "Express", "PostgreSQL", "Docker", "TypeORM", "Redis", "BullMQ", "class-transformer", "class-validator", "Jest"],
+    tech: [
+      "TypeScript",
+      "Node.js",
+      "NestJS",
+      "Express",
+      "PostgreSQL",
+      "Docker",
+      "TypeORM",
+      "Redis",
+      "BullMQ",
+      "class-transformer",
+      "class-validator",
+      "Jest",
+    ],
   },
   {
     role: "Web Developer (Internship)",
@@ -44,7 +57,15 @@ const experiences: ExperienceItem[] = [
       "Developed and maintained 2 web applications as a part of a 4-member team using React and Spring Boot, reduced page load times by 30 % by using Tanstack Router, Tanstack Query, and data fetching techniques.",
       "Improved code quality and maintainability by participating in bi-weekly code reviews, sprint planning, and implementing best practices across two web apps.",
     ],
-    tech: ["React", "Tanstack Query", "Tanstack Router", "Tailwind CSS", "Spring Boot", "Kotlin", "PostgreSQL"],
+    tech: [
+      "React",
+      "Tanstack Query",
+      "Tanstack Router",
+      "Tailwind CSS",
+      "Spring Boot",
+      "Kotlin",
+      "PostgreSQL",
+    ],
   },
 ]
 

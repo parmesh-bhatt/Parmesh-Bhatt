@@ -27,7 +27,24 @@ const projects: Project[] = [
     title: "RitualPlanner",
     description:
       "RitualPlanner is a powerful web-based tool designed for priests to efficiently manage their daily religious tasks. From scheduling rituals and tracking clients to handling payments and reminders, it brings complete organization to every aspect of religious service management.",
-    tech: ["React", "Tanstack Router", "Tanstack Query", "Tailwind CSS", "Shadcn UI", "Node.js", "NestJs", "PostgreSQL", "Redis", "TypeOrm", "JWT", "Passport.js", "BullMQ", "class-transformer", "class-validator", "Jest"],
+    tech: [
+      "React",
+      "Tanstack Router",
+      "Tanstack Query",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Node.js",
+      "NestJs",
+      "PostgreSQL",
+      "Redis",
+      "TypeOrm",
+      "JWT",
+      "Passport.js",
+      "BullMQ",
+      "class-transformer",
+      "class-validator",
+      "Jest",
+    ],
     github: "https://github.com/RitualPlanner",
     live: "",
   },
@@ -35,7 +52,24 @@ const projects: Project[] = [
     title: "RitualPanchang",
     description:
       "RitualPanchang is a comprehensive web-based tool that provides accurate and localized panchangam information. It helps priests and individuals plan religious observances with precise timings for tithis, nakshatras, yogas, and other Vedic astrological data.",
-    tech: ["React", "Tanstack Router", "Tanstack Query", "Tailwind CSS", "Shadcn UI", "Node.js", "NestJs", "PostgreSQL", "Redis", "TypeOrm", "JWT", "Passport.js", "BullMQ", "class-transformer", "class-validator", "Jest"],
+    tech: [
+      "React",
+      "Tanstack Router",
+      "Tanstack Query",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Node.js",
+      "NestJs",
+      "PostgreSQL",
+      "Redis",
+      "TypeOrm",
+      "JWT",
+      "Passport.js",
+      "BullMQ",
+      "class-transformer",
+      "class-validator",
+      "Jest",
+    ],
     github: "https://github.com/RitualPanchang",
     live: "",
   },
@@ -45,7 +79,7 @@ const projects: Project[] = [
       "Furniture Rentals is a web-based platform for online furniture rental services, allowing customers to browse items, manage subscriptions, track orders, and make secure payments. This platform aims to simplify the process of renting furniture with a digitized solution.",
     tech: ["React", "Node.js", "Express.js", "Tailwind CSS", "Razorpay", "MongoDB"],
     github: "https://github.com/parmesh-bhatt/Furniture-Rentals",
-    live: "https://furniture-renting-client.onrender.com/"
+    live: "https://furniture-renting-client.onrender.com/",
   },
   {
     title: "Bug Tracking System",
@@ -60,7 +94,7 @@ const projects: Project[] = [
       "The Transport Management System (TMS) is a web-based platform that streamlines logistics operations by managing vehicles, drivers, and shipments. It enables efficient transport assignment, delivery tracking, and centralized monitoring through an admin dashboard. Customers and businesses can also track their deliveries in real time.",
     tech: ["React", "Tailwind CSS", "Spring Boot", "Kotlin", "Keycloak", "PostgreSQL", "Docker"],
     github: "https://github.com/parmesh-bhatt/TMS",
-    live: ""
+    live: "",
   },
   {
     title: "Medical Chatbot",
@@ -68,7 +102,7 @@ const projects: Project[] = [
       "This whole ChatBot we created to learn and our main motive is to digitalize the medical field because India is very behind in medical technologies. The big cities have many facilities but small village people cannot go to big cities and afford the cost. With the use of these ChatBots, if they have small smartphones they can easily get the solution to small diseases and get the answer from their home.",
     tech: ["Telegram", "Dialogflow"],
     github: "https://github.com/parmesh-bhatt/Medical-Chatbot",
-  }
+  },
 ]
 
 export default function Projects() {
@@ -113,9 +147,7 @@ export default function Projects() {
               <Card className="h-full flex flex-col border-border hover:border-highlight/40 hover:shadow-[0_10px_30px_-10px_var(--color-highlight)]/10 dark:hover:shadow-[0_10px_30px_-10px_var(--color-highlight)]/5 transition-all duration-300">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg">{project.title}</CardTitle>
-                  <CardDescription className="leading-6">
-                    {project.description}
-                  </CardDescription>
+                  <CardDescription className="leading-6">{project.description}</CardDescription>
                 </CardHeader>
 
                 <CardContent className="flex-1 pb-3">

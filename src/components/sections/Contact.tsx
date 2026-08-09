@@ -108,8 +108,7 @@ export default function Contact() {
               Let's Connect
             </h3>
             <p className="leading-7 text-muted-foreground mb-8">
-              Feel free to reach out for collaborations, opportunities, or just
-              to say hello!
+              Feel free to reach out for collaborations, opportunities, or just to say hello!
             </p>
 
             <div className="space-y-5">
@@ -140,10 +139,7 @@ export default function Contact() {
                   <div>
                     <p className="text-sm text-muted-foreground">{label}</p>
                     {href ? (
-                      <a
-                        href={href}
-                        className="font-medium hover:text-highlight transition-colors"
-                      >
+                      <a href={href} className="font-medium hover:text-highlight transition-colors">
                         {value}
                       </a>
                     ) : (
@@ -172,9 +168,7 @@ export default function Contact() {
                     aria-invalid={!!errors.name}
                     {...register("name")}
                   />
-                  {errors.name && (
-                    <p className="text-xs text-destructive">{errors.name.message}</p>
-                  )}
+                  {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor="email">Email</Label>
