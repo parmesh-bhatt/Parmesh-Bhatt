@@ -1,5 +1,6 @@
 {
   "framework": "vite",
-  "devCommand": "npm run dev -- --port $PORT",
-  "buildCommand": "npm run build"
+  "devCommand": "pnpm run dev -- --port $PORT",
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install"
 }
