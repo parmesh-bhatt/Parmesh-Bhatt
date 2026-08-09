@@ -2,5 +2,5 @@
   "framework": "vite",
   "devCommand": "pnpm run dev -- --port $PORT",
   "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install"
+  "installCommand": "corepack enable && pnpm install"
 }
