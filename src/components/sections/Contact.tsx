@@ -1,8 +1,6 @@
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,14 +8,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { SectionHeading } from "@/components/SectionHeading"
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
-  subject: z.string().min(3, "Subject must be at least 3 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-})
-
-type ContactForm = z.infer<typeof contactSchema>
+import { validateContact } from "@/schemas/contact"
+import type { ContactForm } from "@/schemas/contact"
 
 const contactDetails = [
   {
@@ -41,24 +33,46 @@ const contactDetails = [
 ]
 
 export default function Contact() {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<ContactForm>({ resolver: zodResolver(contactSchema) })
+  const [formData, setFormData] = useState<ContactForm>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
+  
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const onSubmit = async (data: ContactForm) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({ ...prev, [id]: value }))
+    // Clear validation error on change
+    if (errors[id as keyof ContactForm]) {
+      setErrors((prev) => ({ ...prev, [id]: undefined }))
+    }
+  }
+
+  const validate = (): boolean => {
+    const newErrors = validateContact(formData)
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!validate()) return
+
+    setIsSubmitting(true)
     try {
       const response = await fetch("/api/send-mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       })
 
-      let result: any = {}
+      let result: { error?: string } = {}
       const contentType = response.headers.get("content-type")
       if (contentType && contentType.includes("application/json")) {
         result = await response.json()
@@ -79,12 +93,15 @@ export default function Contact() {
       toast.success("Message sent!", {
         description: "Thanks for reaching out. I'll get back to you soon.",
       })
-      reset()
-    } catch (error: any) {
-      console.error("Error sending contact form:", error)
+      setFormData({ name: "", email: "", subject: "", message: "" })
+    } catch (error) {
+      const err = error instanceof Error ? error : new Error(String(error))
+      console.error("Error sending contact form:", err)
       toast.error("Failed to send message", {
-        description: error.message || "Please try again later or email me directly.",
+        description: err.message || "Please try again later or email me directly.",
       })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -158,17 +175,18 @@ export default function Contact() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ type: "spring", stiffness: 58, damping: 16, delay: 0.1 }}
           >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label htmlFor="name">Name</Label>
                   <Input
                     id="name"
                     placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
                     aria-invalid={!!errors.name}
-                    {...register("name")}
                   />
-                  {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
+                  {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
                 </div>
                 <div className="space-y-1.5">
                   <Label htmlFor="email">Email</Label>
@@ -176,11 +194,12 @@ export default function Contact() {
                     id="email"
                     type="email"
                     placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={handleChange}
                     aria-invalid={!!errors.email}
-                    {...register("email")}
                   />
                   {errors.email && (
-                    <p className="text-xs text-destructive">{errors.email.message}</p>
+                    <p className="text-xs text-destructive">{errors.email}</p>
                   )}
                 </div>
               </div>
@@ -190,11 +209,12 @@ export default function Contact() {
                 <Input
                   id="subject"
                   placeholder="What's this about?"
+                  value={formData.subject}
+                  onChange={handleChange}
                   aria-invalid={!!errors.subject}
-                  {...register("subject")}
                 />
                 {errors.subject && (
-                  <p className="text-xs text-destructive">{errors.subject.message}</p>
+                  <p className="text-xs text-destructive">{errors.subject}</p>
                 )}
               </div>
 
@@ -204,11 +224,12 @@ export default function Contact() {
                   id="message"
                   placeholder="Tell me about your project or opportunity..."
                   rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
                   aria-invalid={!!errors.message}
-                  {...register("message")}
                 />
                 {errors.message && (
-                  <p className="text-xs text-destructive">{errors.message.message}</p>
+                  <p className="text-xs text-destructive">{errors.message}</p>
                 )}
               </div>
 
