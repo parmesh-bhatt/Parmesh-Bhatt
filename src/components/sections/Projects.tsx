@@ -29,7 +29,6 @@ const projects: Project[] = [
       "RitualPlanner is a powerful web-based tool designed for priests to efficiently manage their daily religious tasks. From scheduling rituals and tracking clients to handling payments and reminders, it brings complete organization to every aspect of religious service management.",
     tech: [
       "React",
-      "Tanstack Router",
       "Tanstack Query",
       "Tailwind CSS",
       "Shadcn UI",
