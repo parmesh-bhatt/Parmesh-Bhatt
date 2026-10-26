@@ -55,10 +55,14 @@ export default function Education() {
                 damping: 15,
                 delay: i * 0.12,
               }}
-              className="rounded-xl border border-border bg-card p-6 hover:shadow-md transition-shadow duration-300"
+              whileHover={{
+                y: -5,
+                transition: { type: "spring", stiffness: 350, damping: 20 },
+              }}
+              className="rounded-2xl border border-border/80 dark:border-white/10 bg-card p-6 md:p-7 shadow-sm hover:border-highlight/40 hover:shadow-xl hover:shadow-highlight/5 transition-all duration-300"
             >
               <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3.5">
                   <motion.div
                     initial={{ scale: 0, rotate: -15 }}
                     whileInView={{ scale: 1, rotate: 0 }}
@@ -69,28 +73,32 @@ export default function Education() {
                       damping: 12,
                       delay: i * 0.12 + 0.15,
                     }}
-                    className="mt-0.5 rounded-lg bg-highlight/10 p-2 shrink-0"
+                    className="mt-0.5 rounded-xl bg-highlight/10 p-2.5 shrink-0 text-highlight"
                   >
-                    <GraduationCap className="h-5 w-5 text-highlight" />
+                    <GraduationCap className="h-5 w-5" />
                   </motion.div>
                   <div>
-                    <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">
+                    <h3 className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
                       {edu.degree}
                     </h3>
-                    <p className="text-highlight text-sm font-medium mt-0.5">{edu.institution}</p>
+                    <p className="text-highlight text-sm font-semibold mt-0.5">{edu.institution}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-1.5 text-sm text-muted-foreground shrink-0">
-                  <Calendar className="h-3.5 w-3.5" />
+                <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground shrink-0 bg-muted/60 px-3 py-1 rounded-full border border-border/60">
+                  <Calendar className="h-3.5 w-3.5 text-highlight" />
                   <span>{edu.period}</span>
                 </div>
               </div>
 
-              <p className="text-sm text-muted-foreground leading-6 mb-4">{edu.description}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed my-4">{edu.description}</p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/50">
                 {edu.highlights.map((item) => (
-                  <Badge key={item} variant="outline" className="text-xs">
+                  <Badge
+                    key={item}
+                    variant="outline"
+                    className="text-xs font-medium bg-muted/50 hover:bg-highlight/10 hover:text-highlight transition-colors cursor-default"
+                  >
                     {item}
                   </Badge>
                 ))}

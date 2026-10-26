@@ -120,7 +120,7 @@ export default function Projects() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           title="Featured Projects"
-          subtitle="A selection of my recent work and personal projects."
+          subtitle="A showcase of web applications, platforms, and tools built to solve real-world problems."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

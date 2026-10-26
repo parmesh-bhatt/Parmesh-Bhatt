@@ -37,9 +37,24 @@ function scrollTo(id: string) {
 }
 
 const socialLinks = [
-  { href: "https://github.com/parmesh-bhatt", label: "GitHub", Icon: GitHubIcon },
-  { href: "https://linkedin.com/in/parmesh-bhatt", label: "LinkedIn", Icon: LinkedInIcon },
-  { href: "https://x.com/Parmesh_119", label: "X", Icon: XIcon },
+  {
+    label: "GitHub",
+    href: "https://github.com/parmesh-bhatt",
+    handle: "parmesh-bhatt",
+    Icon: GitHubIcon,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/parmesh-bhatt",
+    handle: "parmesh-bhatt",
+    Icon: LinkedInIcon,
+  },
+  {
+    label: "X",
+    href: "https://x.com/Parmesh_119",
+    handle: "@Parmesh_119",
+    Icon: XIcon,
+  },
 ]
 
 const spring = (delay = 0) => ({
@@ -103,7 +118,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-16 px-4 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-24 sm:pb-20 px-4 overflow-hidden"
     >
       {/* Subtle ambient blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -185,65 +200,79 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={spring(0.5)}
-          className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-7"
+          className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
         >
           Passionate about crafting meaningful, scalable, and beautifully designed software that
-          simplifies real-world challenges—blending modern technology with purposeful impact.
+          simplifies real-world challenges—blending modern full-stack engineering with purposeful
+          impact.
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTAs with tactile hover and border glow */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={spring(0.62)}
           className="flex flex-wrap items-center justify-center gap-4 mb-10"
         >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
             <Button
               size="lg"
-              className="bg-highlight text-highlight-foreground hover:bg-highlight/90 shadow-sm cursor-pointer"
+              className="bg-highlight text-highlight-foreground hover:bg-highlight/90 shadow-md hover:shadow-highlight/25 transition-all duration-300 cursor-pointer font-medium px-6"
               onClick={() => scrollTo("projects")}
             >
-              View My Work
+              View Featured Work
             </Button>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
             <Button
               size="lg"
               variant="outline"
-              className="cursor-pointer"
+              className="border-border hover:border-highlight/50 hover:bg-highlight/5 shadow-sm transition-all duration-300 cursor-pointer font-medium px-6"
               onClick={() => scrollTo("contact")}
             >
-              <Mail className="h-4 w-4" />
+              <Mail className="h-4 w-4 text-highlight mr-1" />
               Get In Touch
             </Button>
           </motion.div>
         </motion.div>
 
-        {/* Social links */}
+        {/* Social Cards matching Get In Touch */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.78, duration: 0.5 }}
-          className="flex items-center justify-center gap-6"
+          className="flex flex-wrap items-center justify-center gap-3 pt-2"
         >
-          {socialLinks.map(({ href, label, Icon }, i) => (
+          {socialLinks.map(({ href, label, handle, Icon }, i) => (
             <motion.a
               key={label}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={label}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={spring(0.82 + i * 0.08)}
-              whileHover={{
-                scale: 1.15,
-                transition: { type: "spring", stiffness: 300, damping: 15 },
-              }}
-              className="text-muted-foreground hover:text-highlight transition-colors duration-200"
+              whileHover={{ y: -3, scale: 1.02 }}
+              whileTap={{ scale: 0.97 }}
+              className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-border/80 dark:border-white/10 bg-card/80 backdrop-blur-sm hover:border-highlight/50 hover:bg-highlight/5 transition-all text-sm group shadow-sm"
             >
-              <Icon className="h-5 w-5" />
+              <Icon className="h-4 w-4 text-foreground group-hover:text-highlight transition-colors shrink-0" />
+              <div className="text-left">
+                <span className="text-xs font-medium text-foreground group-hover:text-highlight transition-colors block leading-tight">
+                  {label}
+                </span>
+                <span className="text-[10px] text-muted-foreground block leading-tight">
+                  {handle}
+                </span>
+              </div>
             </motion.a>
           ))}
         </motion.div>
@@ -256,7 +285,7 @@ export default function Hero() {
         transition={{ delay: 1.4, duration: 0.5 }}
         onClick={() => scrollTo("about")}
         aria-label="Scroll to About"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-highlight transition-colors animate-bounce"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-highlight transition-colors animate-bounce"
       >
         <ArrowDown className="h-5 w-5" />
       </motion.button>

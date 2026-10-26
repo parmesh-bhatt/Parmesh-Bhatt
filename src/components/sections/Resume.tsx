@@ -164,7 +164,7 @@ export default function Resume() {
   const [pdfAvailable, setPdfAvailable] = useState<boolean | null>(null)
 
   useEffect(() => {
-    fetch("/resume.pdf", { method: "HEAD" })
+    fetch("/Parmesh_Bhatt.pdf", { method: "HEAD" })
       .then((r) => {
         const ct = r.headers.get("content-type") ?? ""
         setPdfAvailable(r.ok && !ct.includes("text/html"))
@@ -186,10 +186,10 @@ export default function Resume() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 60, damping: 15 }}
-          className="flex flex-wrap items-center justify-end gap-3 mb-5"
+          className="hidden sm:flex flex-wrap items-center justify-end gap-3 mb-5"
         >
           <Button variant="outline" size="sm" asChild>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="/Parmesh_Bhatt.pdf" target="_blank" rel="noopener noreferrer">
               <ExternalLink className="h-3.5 w-3.5" />
               Open PDF
             </a>
@@ -199,7 +199,7 @@ export default function Resume() {
             className="bg-highlight text-highlight-foreground hover:bg-highlight/90"
             asChild
           >
-            <a href="/resume.pdf" download>
+            <a href="/Parmesh_Bhatt.pdf" download="Parmesh_Bhatt.pdf">
               <Download className="h-3.5 w-3.5" />
               Download
             </a>
@@ -213,24 +213,69 @@ export default function Resume() {
           transition={{ type: "spring", stiffness: 60, damping: 15, delay: 0.1 }}
         >
           {pdfAvailable ? (
-            <div className="rounded-xl border border-border overflow-hidden shadow-sm">
-              {/* Toolbar */}
-              <div className="flex items-center justify-between px-4 py-2.5 border-b bg-muted/50">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <FileText className="h-4 w-4" />
-                  <span>resume.pdf</span>
+            <>
+              {/* Desktop Embedded PDF Viewer */}
+              <div className="hidden sm:block rounded-xl border border-border overflow-hidden shadow-sm">
+                {/* Toolbar */}
+                <div className="flex items-center justify-between px-4 py-2.5 border-b bg-muted/50">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <FileText className="h-4 w-4 text-highlight" />
+                    <span>Parmesh_Bhatt.pdf</span>
+                  </div>
+                  <a
+                    href="/Parmesh_Bhatt.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-highlight hover:underline flex items-center gap-1"
+                  >
+                    Full screen
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
                 </div>
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-highlight hover:underline"
-                >
-                  Full screen
-                </a>
+                <iframe src="/Parmesh_Bhatt.pdf" title="Resume" className="w-full h-[750px] bg-muted" />
               </div>
-              <iframe src="/resume.pdf" title="Resume" className="w-full h-[750px] bg-muted" />
-            </div>
+
+              {/* Mobile Optimized PDF Card */}
+              <div className="block sm:hidden rounded-2xl border border-border/80 dark:border-white/10 bg-card p-6 text-center space-y-4 shadow-sm">
+                <div className="mx-auto h-16 w-16 rounded-2xl bg-highlight/10 border border-highlight/20 flex items-center justify-center text-highlight shadow-inner">
+                  <FileText className="h-8 w-8" />
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">Parmesh_Bhatt.pdf</h3>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    PDF Document • Updated Resume
+                  </p>
+                </div>
+
+                <p className="text-xs text-muted-foreground leading-relaxed px-2">
+                  Mobile browsers require opening PDFs in their native full-screen viewer for complete pages and zoom.
+                </p>
+
+                <div className="space-y-2.5 pt-2">
+                  <Button
+                    className="w-full bg-highlight text-highlight-foreground hover:bg-highlight/90 font-medium shadow-sm"
+                    asChild
+                  >
+                    <a href="/Parmesh_Bhatt.pdf" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      Open Fullscreen PDF
+                    </a>
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    className="w-full border-border hover:border-highlight/40"
+                    asChild
+                  >
+                    <a href="/Parmesh_Bhatt.pdf" download="Parmesh_Bhatt.pdf">
+                      <Download className="h-4 w-4 mr-2" />
+                      Download PDF
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </>
           ) : (
             <ResumeContent />
           )}
@@ -243,7 +288,7 @@ export default function Resume() {
             transition={{ delay: 0.5 }}
             className="text-center text-xs text-muted-foreground mt-4"
           >
-            Place your <code className="bg-muted rounded px-1">resume.pdf</code> in the{" "}
+            Place your <code className="bg-muted rounded px-1">Parmesh_Bhatt.pdf</code> in the{" "}
             <code className="bg-muted rounded px-1">/public</code> folder to embed the actual PDF
             above.
           </motion.p>

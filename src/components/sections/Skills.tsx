@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { SectionHeading } from "@/components/SectionHeading"
-import { techIcons } from "@/components/tech-icons"
+import { techIcons, techColors } from "@/components/tech-icons"
 
 interface Skill {
   name: keyof typeof techIcons
@@ -55,7 +55,6 @@ const skillGroups: SkillGroup[] = [
       { name: "MySQL" },
       { name: "Redis" },
       { name: "Firebase" },
-      { name: "TypeORM" },
     ],
   },
   {
@@ -64,10 +63,11 @@ const skillGroups: SkillGroup[] = [
     skills: [
       { name: "Git & GitHub" },
       { name: "Docker" },
+      { name: "TypeORM" },
       { name: "Jest" },
+      { name: "Postman" },
       { name: "Vercel" },
       { name: "VS Code" },
-      { name: "Postman" },
     ],
   },
 ]
@@ -94,6 +94,7 @@ const itemVariants = {
 
 function SkillBadge({ skill }: { skill: Skill }) {
   const Icon = techIcons[skill.name]
+  const brandColor = techColors[skill.name]
   return (
     <motion.div
       variants={itemVariants}
@@ -104,7 +105,10 @@ function SkillBadge({ skill }: { skill: Skill }) {
       }}
       className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-1.5 text-sm font-medium cursor-default hover:border-highlight/40 hover:shadow-sm transition-all"
     >
-      <span className="text-base leading-none shrink-0 [&_svg]:size-4">
+      <span
+        className="text-base leading-none shrink-0 [&_svg]:size-4"
+        style={brandColor ? { color: brandColor } : undefined}
+      >
         <Icon />
       </span>
       {skill.name}

@@ -19,7 +19,7 @@ const experiences: ExperienceItem[] = [
     period: "December 2025 – Present",
     type: "Full-time",
     description: [
-      "Delivered scalable backend APIs with NestJS and Express, supporting multiple application features, by designing relational schemas and migrations using TypeORM and PostgreSQL.",
+      "Delivered scalable backend APIs with NestJS, supporting multiple application features, by designing relational schemas and migrations using TypeORM and PostgreSQL.",
       "Improved deployment reliability and code maintainability, reducing environment-related issues, by containerizing services with Docker and following clean TypeScript and Git- based workflows.",
     ],
     tech: [

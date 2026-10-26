@@ -46,6 +46,7 @@ export const techIcons = {
   "React Router": SiReactrouter,
   "Node.js": SiNodedotjs,
   NestJs: SiNestjs,
+  NestJS: SiNestjs,
   Express: SiExpress,
   "Spring Boot": SiSpringboot,
   Java: Coffee,
@@ -67,5 +68,41 @@ export const techIcons = {
   "VS Code": SiVscodium, // VS Code uses SiVscodium from react-icons/si
   Postman: SiPostman,
 } as const
+
+export const techColors: Partial<Record<TechIconName, string>> = {
+  React: "#61DAFB",
+  "Next.js": undefined, // Theme adaptive (black in light, white in dark)
+  TypeScript: "#3178C6",
+  JavaScript: "#EAB308", // Authentic JS gold
+  "Tailwind CSS": "#06B6D4",
+  "Shadcn UI": undefined,
+  "HTML / CSS": "#E34F26",
+  "React Query": "#FF4154",
+  "Tanstack Router": "#FF4154",
+  "React Router": "#CA4245",
+  "Node.js": "#5FA04E",
+  NestJs: "#E0234E",
+  NestJS: "#E0234E",
+  Express: undefined,
+  "Spring Boot": "#6DB33F",
+  Java: "#E76F00",
+  Kotlin: "#7F52FF",
+  "REST APIs": "#0284C7",
+  GraphQL: "#E10098",
+  "System Design": "#8B5CF6",
+  PostgreSQL: "#336791",
+  MongoDB: "#47A248",
+  MySQL: "#00758F",
+  Redis: "#DC382D",
+  Firebase: "#FFA611",
+  TypeORM: "#FE0902",
+  BullMQ: "#E53935",
+  "Git & GitHub": "#F05032",
+  Docker: "#2496ED",
+  Jest: "#C21325",
+  Vercel: undefined,
+  "VS Code": "#007ACC",
+  Postman: "#FF6C37",
+}
 
 export type TechIconName = keyof typeof techIcons
