@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body { background: #121212; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 30px; }
+    .grid { display: flex; gap: 40px; }
+    .item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Favicon Proportions Test</h2>
+  <div class="grid">
+    <div class="item">
+      <span>1. Original Space Grotesk (fs=24)</span>
+      <svg width="64" height="64" viewBox="0 0 44 44">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ea580c"/>
+            <stop offset="50%" stop-color="#f97316"/>
+            <stop offset="100%" stop-color="#fbbf24"/>
+          </linearGradient>
+        </defs>
+        <rect width="44" height="44" rx="10" fill="url(#g1)"/>
+        <text x="22" y="22.5" font-family="'Space Grotesk', system-ui, sans-serif" font-size="24" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">PB</text>
+      </svg>
+      <!-- Also 16px view (actual tab size) -->
+      <svg width="16" height="16" viewBox="0 0 44 44">
+        <rect width="44" height="44" rx="10" fill="url(#g1)"/>
+        <text x="22" y="22.5" font-family="'Space Grotesk', system-ui, sans-serif" font-size="24" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">PB</text>
+      </svg>
+    </div>
+
+    <div class="item">
+      <span>2. Balanced Wide (fs=20, fw=800)</span>
+      <svg width="64" height="64" viewBox="0 0 44 44">
+        <rect width="44" height="44" rx="10" fill="url(#g1)"/>
+        <text x="22" y="22.5" font-family="'Space Grotesk', system-ui, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">PB</text>
+      </svg>
+      <svg width="16" height="16" viewBox="0 0 44 44">
+        <rect width="44" height="44" rx="10" fill="url(#g1)"/>
+        <text x="22" y="22.5" font-family="'Space Grotesk', system-ui, sans-serif" font-size="20" font-weight="800" fill="#fff" text-anchor="middle" dominant-baseline="central">PB</text>
+      </svg>
+    </div>
+
+    <div class="item">
+      <span>3. Original blue geometry in yellow-orange (viewBox 44x44, rect 64x64, fs=28)</span>
+      <svg width="64" height="64" viewBox="0 0 44 44">
+        <rect width="64" height="64" rx="14" fill="url(#g1)"/>
+        <text x="50%" y="50%" font-family="'Space Grotesk', system-ui, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">PB</text>
+      </svg>
+      <svg width="16" height="16" viewBox="0 0 44 44">
+        <rect width="64" height="64" rx="14" fill="url(#g1)"/>
+        <text x="50%" y="50%" font-family="'Space Grotesk', system-ui, sans-serif" font-size="28" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">PB</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowDown, Mail, Circle } from "lucide-react"
+import { ArrowDown, Mail, Circle, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
@@ -57,52 +57,7 @@ const socialLinks = [
   },
 ]
 
-const spring = (delay = 0) => ({
-  type: "spring" as const,
-  stiffness: 65,
-  damping: 18,
-  delay,
-})
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.05, // Stagger each character entry
-    },
-  },
-  exit: {
-    transition: {
-      staggerChildren: 0.05, // Stagger exit
-      staggerDirection: -1 as const, // Exit from right to left (last character exits first)
-    },
-  },
-}
-
-const childVariants = {
-  hidden: {
-    opacity: 0,
-    x: -10,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring" as const,
-      stiffness: 300,
-      damping: 22,
-    },
-  },
-  exit: {
-    opacity: 0,
-    x: 10,
-    transition: {
-      type: "spring" as const,
-      stiffness: 300,
-      damping: 22,
-    },
-  },
-}
+import { smoothEase, snappySpring } from "@/lib/animations"
 
 const roles = ["Software Engineer", "Product Builder", "System Designer", "Problem Solver"]
 
@@ -110,135 +65,162 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const roleInterval = setInterval(() => {
       setRoleIndex((prev) => (prev + 1) % roles.length)
-    }, 6000) // Stay on screen for 5+ seconds
-    return () => clearInterval(interval)
+    }, 4500)
+    return () => clearInterval(roleInterval)
   }, [])
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-24 sm:pb-20 px-4 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-24 sm:pb-20 px-4 overflow-hidden"
     >
-      {/* Subtle ambient blobs */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute top-1/4 -left-32 h-80 w-80 rounded-full bg-highlight/10 blur-3xl"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.3 }}
-          className="absolute bottom-1/4 -right-32 h-96 w-96 rounded-full bg-highlight/8 blur-3xl"
-        />
+      {/* Left Cyber Matrix Dot Grid (Sheryians Inspired) */}
+      <div
+        aria-hidden="true"
+        className="hidden xl:block pointer-events-none absolute left-6 2xl:left-14 top-1/2 -translate-y-1/2 select-none opacity-40 -z-10"
+      >
+        <div className="p-3 border-l border-t border-orange-500/20 rounded-tl-lg backdrop-blur-[1px]">
+          <div className="grid grid-cols-5 gap-3 font-mono text-[10px] text-orange-500/30">
+            {Array.from({ length: 30 }).map((_, i) => (
+              <span
+                key={i}
+                className={i % 4 === 0 ? "text-orange-500/70 font-bold animate-pulse" : ""}
+              >
+                +
+              </span>
+            ))}
+          </div>
+          <p className="mt-3 text-[9px] font-mono tracking-widest text-orange-500/50 uppercase">
+            SYS.01 // FULL-STACK
+          </p>
+        </div>
       </div>
 
-      <div className="mx-auto max-w-4xl text-center">
-        {/* Available for work badge */}
+      {/* Right Cyber Matrix Dot Grid (Sheryians Inspired) */}
+      <div
+        aria-hidden="true"
+        className="hidden xl:block pointer-events-none absolute right-6 2xl:right-14 top-1/2 -translate-y-1/2 select-none opacity-40 -z-10"
+      >
+        <div className="p-3 border-r border-t border-orange-500/20 rounded-tr-lg backdrop-blur-[1px] text-right">
+          <div className="grid grid-cols-5 gap-3 font-mono text-[10px] text-orange-500/30">
+            {Array.from({ length: 30 }).map((_, i) => (
+              <span
+                key={i}
+                className={i % 5 === 0 ? "text-orange-500/70 font-bold animate-pulse" : ""}
+              >
+                +
+              </span>
+            ))}
+          </div>
+          <p className="mt-3 text-[9px] font-mono tracking-widest text-orange-500/50 uppercase">
+            ENV // PRODUCTION
+          </p>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-4xl text-center z-10">
+        {/* Available for Opportunities Status Badge */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={spring(0)}
-          className="flex justify-center mb-6"
+          transition={snappySpring}
+          className="flex justify-center mb-6 will-change-transform"
         >
           <Badge
             variant="outline"
-            className="gap-1.5 px-3 py-1 text-sm border-highlight/40 text-highlight bg-highlight/5"
+            className="gap-1.5 px-3 py-1 text-xs border-highlight/40 text-highlight bg-highlight/5 shadow-xs"
           >
             <Circle className="h-2 w-2 fill-green-500 text-green-500 animate-pulse" />
-            Available for Work
+            Available for Opportunities
           </Badge>
         </motion.div>
 
         {/* Greeting */}
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={spring(0.1)}
-          className="text-xl md:text-2xl font-medium text-muted-foreground mb-3 tracking-wide"
+          transition={{ ...snappySpring, delay: 0.05 }}
+          className="text-lg md:text-xl font-medium text-muted-foreground mb-2 tracking-wide will-change-transform"
         >
           Hi👋, I'm
         </motion.p>
 
         {/* Name — curtain reveal */}
-        <div className="overflow-hidden mb-3">
+        <div className="overflow-hidden mb-4">
           <motion.h1
-            initial={{ y: "110%" }}
-            animate={{ y: "0%" }}
-            transition={spring(0.2)}
-            className="scroll-m-20 text-5xl md:text-6xl font-extrabold tracking-tight text-highlight leading-tight"
+            initial={{ y: "100%", opacity: 0 }}
+            animate={{ y: "0%", opacity: 1 }}
+            transition={{ ...snappySpring, delay: 0.09 }}
+            className="scroll-m-20 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight will-change-transform"
           >
-            Parmesh Bhatt
+            <span className="text-foreground">Parmesh </span>
+            <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+              Bhatt
+            </span>
           </motion.h1>
         </div>
 
-        {/* Role */}
-        <div className="h-10 flex items-center justify-center overflow-hidden mb-8">
+        {/* Dynamic Role Transition */}
+        <div className="h-10 flex items-center justify-center overflow-hidden mb-6">
           <AnimatePresence mode="wait">
             <motion.h2
               key={roles[roleIndex]}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="text-xl md:text-2xl font-medium text-muted-foreground flex justify-center"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35, ease: smoothEase }}
+              className="text-lg md:text-xl font-medium text-muted-foreground flex justify-center tracking-wide"
             >
-              {roles[roleIndex].split("").map((char, index) => (
-                <motion.span key={index} variants={childVariants} className="inline-block">
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
+              {roles[roleIndex]}
             </motion.h2>
           </AnimatePresence>
         </div>
 
         {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={spring(0.5)}
-          className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
+          transition={{ ...snappySpring, delay: 0.15 }}
+          className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed font-normal will-change-transform"
         >
           Passionate about crafting meaningful, scalable, and beautifully designed software that
           simplifies real-world challenges—blending modern full-stack engineering with purposeful
           impact.
         </motion.p>
 
-        {/* CTAs with tactile hover and border glow */}
+        {/* CTAs with Sheryians Glowing Button & Shimmer */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={spring(0.62)}
-          className="flex flex-wrap items-center justify-center gap-4 mb-10"
+          transition={{ ...snappySpring, delay: 0.22 }}
+          className="flex flex-wrap items-center justify-center gap-4 mb-10 will-change-transform"
         >
           <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            whileHover={{ y: -2, transition: { duration: 0.2, ease: "easeOut" } }}
+            whileTap={{ scale: 0.98 }}
           >
             <Button
               size="lg"
-              className="bg-highlight text-highlight-foreground hover:bg-highlight/90 shadow-md hover:shadow-highlight/25 transition-all duration-300 cursor-pointer font-medium px-6"
+              className="relative overflow-hidden group bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-semibold px-7 py-3.5 rounded-xl sheryians-btn-glow transition-all duration-300 cursor-pointer border-0 shadow-lg"
               onClick={() => scrollTo("projects")}
             >
               View Featured Work
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1.5 transition-transform" />
             </Button>
           </motion.div>
           <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            whileHover={{ y: -2, transition: { duration: 0.2, ease: "easeOut" } }}
+            whileTap={{ scale: 0.98 }}
           >
             <Button
               size="lg"
               variant="outline"
-              className="border-border hover:border-highlight/50 hover:bg-highlight/5 shadow-sm transition-all duration-300 cursor-pointer font-medium px-6"
+              className="border-border hover:border-highlight/60 hover:bg-highlight/10 shadow-sm transition-all duration-300 cursor-pointer font-medium px-6 py-3.5 rounded-xl"
               onClick={() => scrollTo("contact")}
             >
-              <Mail className="h-4 w-4 text-highlight mr-1" />
+              <Mail className="h-4 w-4 text-highlight mr-1.5" />
               Get In Touch
             </Button>
           </motion.div>
@@ -248,8 +230,8 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.78, duration: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-3 pt-2"
+          transition={{ ...snappySpring, delay: 0.28 }}
+          className="flex flex-wrap items-center justify-center gap-3 pt-2 will-change-transform"
         >
           {socialLinks.map(({ href, label, handle, Icon }, i) => (
             <motion.a
@@ -259,10 +241,10 @@ export default function Hero() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={spring(0.82 + i * 0.08)}
-              whileHover={{ y: -3, scale: 1.02 }}
+              transition={{ ...snappySpring, delay: 0.3 + i * 0.035 }}
+              whileHover={{ y: -3, transition: { duration: 0.2, ease: "easeOut" } }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-border/80 dark:border-white/10 bg-card/80 backdrop-blur-sm hover:border-highlight/50 hover:bg-highlight/5 transition-all text-sm group shadow-sm"
+              className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-border/80 dark:border-white/10 bg-card/80 backdrop-blur-sm hover:border-highlight/50 hover:bg-highlight/5 transition-all text-sm group shadow-sm will-change-transform"
             >
               <Icon className="h-4 w-4 text-foreground group-hover:text-highlight transition-colors shrink-0" />
               <div className="text-left">
@@ -282,7 +264,7 @@ export default function Hero() {
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.5 }}
+        transition={{ delay: 0.8, duration: 0.5, ease: smoothEase }}
         onClick={() => scrollTo("about")}
         aria-label="Scroll to About"
         className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-highlight transition-colors animate-bounce"

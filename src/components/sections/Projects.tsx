@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card"
 import { SectionHeading } from "@/components/SectionHeading"
 import { LinkNotFoundModal } from "@/components/LinkNotFoundModal"
+import { snappySpring } from "@/lib/animations"
 
 interface Project {
   title: string
@@ -127,41 +128,58 @@ export default function Projects() {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 28, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{
-                type: "spring",
-                stiffness: 60,
-                damping: 15,
-                delay: i * 0.08,
+                ...snappySpring,
+                delay: i * 0.04,
               }}
               whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { type: "spring", stiffness: 350, damping: 20 },
+                y: -5,
+                transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
               }}
-              className="h-full"
+              className="h-full will-change-transform"
             >
-              <Card className="h-full flex flex-col border-border hover:border-highlight/40 hover:shadow-[0_10px_30px_-10px_var(--color-highlight)]/10 dark:hover:shadow-[0_10px_30px_-10px_var(--color-highlight)]/5 transition-all duration-300">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">{project.title}</CardTitle>
+              <Card className="group relative overflow-hidden h-full flex flex-col border-border/80 dark:border-white/10 bg-card hover:border-orange-500/50 hover:shadow-[0_10px_35px_-8px_rgba(249,115,22,0.22)] transition-all duration-300">
+                {/* Ambient Card Top Glow on Hover */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full bg-orange-500/15 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                />
+
+                <CardHeader className="pb-3 relative z-10">
+                  <div className="flex items-center justify-between gap-2">
+                    <CardTitle className="text-lg group-hover:text-orange-500 transition-colors">
+                      {project.title}
+                    </CardTitle>
+                    <span className="h-1.5 w-1.5 rounded-full bg-orange-500/50 group-hover:bg-orange-500 group-hover:scale-125 transition-all" />
+                  </div>
                   <CardDescription className="leading-6">{project.description}</CardDescription>
                 </CardHeader>
 
-                <CardContent className="flex-1 pb-3">
+                <CardContent className="flex-1 pb-3 relative z-10">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tech.map((t) => (
-                      <Badge key={t} variant="secondary" className="text-xs">
+                      <Badge
+                        key={t}
+                        variant="secondary"
+                        className="text-xs transition-colors hover:border-orange-500/40 hover:text-orange-600 dark:hover:text-orange-400"
+                      >
                         {t}
                       </Badge>
                     ))}
                   </div>
                 </CardContent>
 
-                <CardFooter className="gap-2 pt-0">
+                <CardFooter className="gap-2 pt-0 relative z-10">
                   {project.github ? (
-                    <Button variant="outline" size="sm" className="cursor-pointer" asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="cursor-pointer hover:border-orange-500/50 hover:bg-orange-500/5 transition-all"
+                      asChild
+                    >
                       <a href={project.github} target="_blank" rel="noopener noreferrer">
                         <GitBranch className="h-3.5 w-3.5" />
                         Code
@@ -171,7 +189,7 @@ export default function Projects() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="cursor-pointer"
+                      className="cursor-pointer hover:border-orange-500/50 hover:bg-orange-500/5 transition-all"
                       onClick={() => handleUnavailableLink(project.title, "github")}
                     >
                       <GitBranch className="h-3.5 w-3.5" />
@@ -182,7 +200,7 @@ export default function Projects() {
                   {project.live ? (
                     <Button
                       size="sm"
-                      className="bg-highlight text-highlight-foreground hover:bg-highlight/90 cursor-pointer"
+                      className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-medium shadow-sm hover:shadow-orange-500/30 transition-all cursor-pointer"
                       asChild
                     >
                       <a href={project.live} target="_blank" rel="noopener noreferrer">
@@ -193,7 +211,7 @@ export default function Projects() {
                   ) : (
                     <Button
                       size="sm"
-                      className="bg-highlight text-highlight-foreground hover:bg-highlight/90 cursor-pointer"
+                      className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-medium shadow-sm hover:shadow-orange-500/30 transition-all cursor-pointer"
                       onClick={() => handleUnavailableLink(project.title, "live")}
                     >
                       <ExternalLink className="h-3.5 w-3.5" />

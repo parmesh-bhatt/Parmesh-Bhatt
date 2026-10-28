@@ -2,6 +2,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { Code2, Sparkles, Terminal, Award, FolderGit2, Cpu } from "lucide-react"
 import { SectionHeading } from "@/components/SectionHeading"
+import { snappySpring } from "@/lib/animations"
 
 const facts = [
   { label: "Experience", value: "1+ Years", icon: Sparkles, detail: "Full-Stack & Backend" },
@@ -24,11 +25,11 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Professional Photo Showcase */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, x: -24 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ type: "spring", stiffness: 55, damping: 16 }}
-            className="md:col-span-5 flex justify-center"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={snappySpring}
+            className="md:col-span-5 flex justify-center will-change-transform"
           >
             <div className="relative group w-72 h-80 sm:w-80 sm:h-96">
               {/* Ambient Glow */}
@@ -82,11 +83,11 @@ export default function About() {
 
           {/* Text Content & Structured Highlights */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ type: "spring", stiffness: 55, damping: 16, delay: 0.1 }}
-            className="md:col-span-7 space-y-5"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ ...snappySpring, delay: 0.05 }}
+            className="md:col-span-7 space-y-5 will-change-transform"
           >
             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
               Who I Am
@@ -111,24 +112,24 @@ export default function About() {
                 return (
                   <motion.div
                     key={fact.label}
-                    initial={{ opacity: 0, y: 12, scale: 0.96 }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     whileHover={{
                       y: -4,
-                      transition: { type: "spring", stiffness: 350, damping: 20 },
+                      transition: { duration: 0.2, ease: "easeOut" },
                     }}
                     transition={{
-                      type: "spring",
-                      stiffness: 65,
-                      damping: 16,
-                      delay: 0.2 + i * 0.08,
+                      ...snappySpring,
+                      delay: 0.08 + i * 0.035,
                     }}
-                    className="rounded-xl border border-border/80 dark:border-white/10 bg-card p-3.5 shadow-sm hover:border-highlight/40 hover:shadow-md transition-all duration-300"
+                    className="group rounded-xl border border-border/80 dark:border-white/10 bg-card p-3.5 shadow-sm hover:border-orange-500/40 hover:shadow-[0_8px_25px_-5px_rgba(249,115,22,0.18)] transition-all duration-300 will-change-transform"
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-2xl font-bold text-highlight">{fact.value}</span>
-                      <Icon className="h-4 w-4 text-muted-foreground/70" />
+                      <span className="text-2xl font-extrabold bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+                        {fact.value}
+                      </span>
+                      <Icon className="h-4 w-4 text-muted-foreground/70 group-hover:text-orange-500 transition-colors" />
                     </div>
                     <p className="text-xs font-semibold text-foreground">{fact.label}</p>
                     <p className="text-[11px] text-muted-foreground mt-0.5">{fact.detail}</p>

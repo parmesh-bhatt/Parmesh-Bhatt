@@ -4,6 +4,7 @@ import { Download, ExternalLink, FileText, Briefcase, GraduationCap, Code } from
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { SectionHeading } from "@/components/SectionHeading"
+import { smoothEase } from "@/lib/animations"
 
 function ResumeContent() {
   return (
@@ -161,7 +162,7 @@ function ResumeContent() {
 }
 
 export default function Resume() {
-  const [pdfAvailable, setPdfAvailable] = useState<boolean | null>(null)
+  const [pdfAvailable, setPdfAvailable] = useState<boolean | null>(true)
 
   useEffect(() => {
     fetch("/Parmesh_Bhatt.pdf", { method: "HEAD" })
@@ -182,10 +183,10 @@ export default function Resume() {
 
         {/* Action buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 60, damping: 15 }}
+          transition={{ duration: 0.45, ease: smoothEase }}
           className="hidden sm:flex flex-wrap items-center justify-end gap-3 mb-5"
         >
           <Button variant="outline" size="sm" asChild>
@@ -207,15 +208,15 @@ export default function Resume() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ type: "spring", stiffness: 60, damping: 15, delay: 0.1 }}
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.08, ease: smoothEase }}
         >
           {pdfAvailable ? (
             <>
               {/* Desktop Embedded PDF Viewer */}
-              <div className="hidden sm:block rounded-xl border border-border overflow-hidden shadow-sm">
+              <div className="hidden sm:block rounded-xl border border-border overflow-hidden shadow-sm min-h-[750px]">
                 {/* Toolbar */}
                 <div className="flex items-center justify-between px-4 py-2.5 border-b bg-muted/50">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -232,7 +233,12 @@ export default function Resume() {
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
-                <iframe src="/Parmesh_Bhatt.pdf" title="Resume" className="w-full h-[750px] bg-muted" />
+                <iframe
+                  src="/Parmesh_Bhatt.pdf"
+                  title="Parmesh Bhatt Resume"
+                  loading="lazy"
+                  className="w-full h-[750px] bg-muted border-0"
+                />
               </div>
 
               {/* Mobile Optimized PDF Card */}

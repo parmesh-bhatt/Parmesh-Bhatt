@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { GraduationCap, Calendar } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { SectionHeading } from "@/components/SectionHeading"
+import { snappySpring } from "@/lib/animations"
 
 interface EducationItem {
   degree: string
@@ -46,32 +47,33 @@ export default function Education() {
           {educationItems.map((edu, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 24, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{
-                type: "spring",
-                stiffness: 60,
-                damping: 15,
-                delay: i * 0.12,
+                ...snappySpring,
+                delay: i * 0.04,
               }}
               whileHover={{
-                y: -5,
-                transition: { type: "spring", stiffness: 350, damping: 20 },
+                y: -4,
+                transition: { duration: 0.2, ease: "easeOut" },
               }}
-              className="rounded-2xl border border-border/80 dark:border-white/10 bg-card p-6 md:p-7 shadow-sm hover:border-highlight/40 hover:shadow-xl hover:shadow-highlight/5 transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl border border-border/80 dark:border-white/10 bg-card p-6 md:p-7 shadow-sm hover:border-orange-500/40 hover:shadow-[0_12px_35px_-10px_rgba(249,115,22,0.18)] transition-all duration-300 will-change-transform"
             >
+              {/* Ambient Card Corner Glow on Hover */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full bg-orange-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
               <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                 <div className="flex items-start gap-3.5">
                   <motion.div
-                    initial={{ scale: 0, rotate: -15 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 12,
-                      delay: i * 0.12 + 0.15,
+                      ...snappySpring,
+                      delay: i * 0.04 + 0.05,
                     }}
                     className="mt-0.5 rounded-xl bg-highlight/10 p-2.5 shrink-0 text-highlight"
                   >

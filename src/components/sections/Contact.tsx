@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { SectionHeading } from "@/components/SectionHeading"
 import { contactSchema, type ContactForm } from "@/schemas/contact"
+import { snappySpring } from "@/lib/animations"
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -63,9 +64,8 @@ function SocialCard({ link }: { link: (typeof socialLinks)[number] }) {
       href={link.href}
       target="_blank"
       rel="noopener noreferrer"
-      whileHover={{ y: -3, scale: 1.02 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: "spring", stiffness: 350, damping: 18 }}
+      whileHover={{ y: -3, transition: { duration: 0.2, ease: "easeOut" } }}
+      whileTap={{ scale: 0.98 }}
       className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-border/80 dark:border-white/10 bg-card hover:border-highlight/50 hover:bg-highlight/5 transition-all text-sm group shadow-sm"
     >
       <Icon className="h-4 w-4 text-foreground group-hover:text-highlight transition-colors shrink-0" />
@@ -185,11 +185,11 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-14">
           {/* Contact Information & Channels */}
           <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ type: "spring", stiffness: 58, damping: 16 }}
-            className="md:col-span-5 space-y-6"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={snappySpring}
+            className="md:col-span-5 space-y-6 will-change-transform"
           >
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-highlight/10 text-highlight text-xs font-semibold uppercase tracking-wider mb-3">
@@ -208,17 +208,15 @@ export default function Contact() {
               {contactDetails.map(({ icon: Icon, label, value, href, badge }, i) => (
                 <motion.div
                   key={label}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{
-                    type: "spring",
-                    stiffness: 70,
-                    damping: 16,
-                    delay: 0.1 + i * 0.08,
+                    ...snappySpring,
+                    delay: 0.04 + i * 0.035,
                   }}
-                  whileHover={{ x: 4 }}
-                  className="p-4 rounded-2xl border border-border/80 dark:border-white/10 bg-card hover:border-highlight/40 hover:shadow-md transition-all duration-300 flex items-start gap-4"
+                  whileHover={{ x: 4, transition: { duration: 0.2, ease: "easeOut" } }}
+                  className="p-4 rounded-2xl border border-border/80 dark:border-white/10 bg-card hover:border-highlight/40 hover:shadow-md transition-all duration-300 flex items-start gap-4 will-change-transform"
                 >
                   <div className="rounded-xl bg-highlight/10 p-3 shrink-0 text-highlight">
                     <Icon className="h-5 w-5" />
@@ -266,11 +264,11 @@ export default function Contact() {
 
           {/* Contact Form with Zod + React Hook Form */}
           <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ type: "spring", stiffness: 58, damping: 16, delay: 0.1 }}
-            className="md:col-span-7"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ ...snappySpring, delay: 0.05 }}
+            className="md:col-span-7 will-change-transform"
           >
             <div className="p-6 sm:p-8 rounded-2xl border border-border/80 dark:border-white/10 bg-card shadow-lg relative overflow-hidden">
               {isSuccess && (
@@ -375,7 +373,7 @@ export default function Contact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-11 rounded-xl bg-highlight text-highlight-foreground hover:bg-highlight/90 shadow-md font-medium text-sm transition-all duration-200 cursor-pointer"
+                  className="w-full h-11 rounded-xl bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white shadow-md sheryians-btn-glow font-semibold text-sm transition-all duration-300 cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>

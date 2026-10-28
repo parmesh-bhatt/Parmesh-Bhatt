@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react"
 import { Menu, X } from "lucide-react"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import {
@@ -15,10 +14,6 @@ import { cn } from "@/lib/utils"
 
 const FULL_NAME = "Parmesh Bhatt"
 const EMAIL = "parmeshbhatt.dev@gmail.com"
-const INITIALS = FULL_NAME.split(" ")
-  .map((w) => w[0])
-  .join("")
-  .toUpperCase()
 
 const navLinks = [
   { href: "home", label: "Home" },
@@ -74,53 +69,48 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "bg-background border-b border-border shadow-sm" : "bg-transparent"
-      )}
-    >
-      <nav className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 transition-all duration-300 pointer-events-none">
+      <nav
+        className={cn(
+          "mx-auto max-w-5xl h-14 px-3 sm:px-4 rounded-full border border-border/80 dark:border-white/10 bg-card/80 backdrop-blur-md flex items-center justify-between pointer-events-auto transition-all duration-300",
+          scrolled ? "shadow-lg bg-card/90" : "shadow-sm"
+        )}
+      >
         <button
           onClick={() => handleNavClick("home")}
-          className="flex items-center gap-2 font-bold text-lg text-highlight hover:opacity-80 transition-opacity"
+          className="flex items-center font-bold text-sm sm:text-base tracking-tight hover:opacity-85 transition-opacity cursor-pointer pl-1 sm:pl-2"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-highlight text-highlight-foreground text-sm font-bold tracking-tight">
-            {INITIALS}
+          <span className="text-foreground">
+            Parmesh{" "}
+            <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+              Bhatt
+            </span>
           </span>
-          <span>{FULL_NAME}</span>
         </button>
 
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden md:flex items-center gap-0.5 lg:gap-1">
           {navLinks.map((link) => (
             <li key={link.href}>
               <button
                 onClick={() => handleNavClick(link.href)}
                 className={cn(
-                  "relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 cursor-pointer",
+                  "px-2.5 lg:px-3 py-1.5 text-xs lg:text-sm rounded-full transition-colors duration-200 cursor-pointer",
                   activeSection === link.href
-                    ? "text-highlight font-semibold"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-orange-600 dark:text-orange-400 font-bold"
+                    : "text-muted-foreground hover:text-foreground font-medium"
                 )}
               >
-                {activeSection === link.href && (
-                  <motion.span
-                    layoutId="activeNavBackground"
-                    className="absolute inset-0 bg-muted rounded-md -z-10"
-                    transition={{ type: "spring", stiffness: 350, damping: 28 }}
-                  />
-                )}
                 {link.label}
               </button>
             </li>
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Button
-            variant="outline"
+            variant="ghost"
             size="sm"
-            className="hidden md:inline-flex border-highlight text-highlight hover:bg-highlight hover:text-highlight-foreground"
+            className="hidden md:inline-flex h-8 px-3 text-xs font-semibold rounded-full text-foreground hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-500/10 dark:hover:bg-white/10 transition-colors cursor-pointer"
             onClick={() => handleNavClick("resume")}
           >
             Resume
@@ -129,8 +119,8 @@ export default function Navbar() {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
+              <Button variant="ghost" size="icon" className="md:hidden h-8 w-8 rounded-full">
+                <Menu className="h-4 w-4" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
@@ -147,9 +137,12 @@ export default function Navbar() {
               <div className="flex items-center justify-between">
                 <button
                   onClick={() => handleNavClick("home")}
-                  className="font-bold text-lg tracking-tight text-foreground hover:text-highlight transition-colors text-left cursor-pointer"
+                  className="font-bold text-lg tracking-tight text-foreground hover:opacity-85 transition-opacity text-left cursor-pointer"
                 >
-                  {FULL_NAME}<span className="text-highlight font-extrabold">.</span>
+                  Parmesh{" "}
+                  <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400 bg-clip-text text-transparent font-extrabold">
+                    Bhatt.
+                  </span>
                 </button>
                 <SheetClose asChild>
                   <button

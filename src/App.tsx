@@ -11,6 +11,7 @@ import Education from "@/components/sections/Education"
 import Resume from "@/components/sections/Resume"
 import Contact from "@/components/sections/Contact"
 import { Toaster } from "@/components/ui/sonner"
+import { smoothEase } from "@/lib/animations"
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -39,7 +40,7 @@ export default function App() {
     <div className="relative min-h-screen bg-background overflow-hidden">
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-highlight origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400 origin-left z-[100]"
         style={{ scaleX }}
       />
 
@@ -70,13 +71,14 @@ export default function App() {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            initial={{ opacity: 0, scale: 0.8, y: 15 }}
+            initial={{ opacity: 0, scale: 0.85, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 15 }}
-            whileHover={{ scale: 1.1, y: -2 }}
+            exit={{ opacity: 0, scale: 0.85, y: 15 }}
+            transition={{ duration: 0.3, ease: smoothEase }}
+            whileHover={{ scale: 1.08, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-highlight text-highlight-foreground shadow-lg hover:opacity-90 transition-opacity cursor-pointer"
+            className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 text-white shadow-lg sheryians-btn-glow hover:opacity-90 transition-all cursor-pointer"
             aria-label="Scroll to top"
           >
             <ArrowUp className="h-5 w-5" />

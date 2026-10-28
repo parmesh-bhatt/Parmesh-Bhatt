@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { Briefcase, Calendar } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { SectionHeading } from "@/components/SectionHeading"
+import { snappySpring } from "@/lib/animations"
 
 interface ExperienceItem {
   role: string
@@ -79,38 +80,28 @@ export default function Experience() {
         />
 
         <div className="relative">
-          <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-border" />
+          <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-orange-500/70 via-amber-500/30 to-border" />
 
           <div className="space-y-8">
             {experiences.map((exp, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -24, scale: 0.98 }}
-                whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{
-                  type: "spring",
-                  stiffness: 60,
-                  damping: 16,
-                  delay: i * 0.1,
+                  ...snappySpring,
+                  delay: i * 0.04,
                 }}
-                className="relative pl-12 md:pl-20"
+                className="relative pl-12 md:pl-20 will-change-transform"
               >
-                {/* Timeline dot */}
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 12,
-                    delay: i * 0.1 + 0.15,
-                  }}
-                  className="absolute left-2.5 md:left-6.5 top-2 h-3 w-3 rounded-full border-2 border-highlight bg-background"
-                />
+                {/* Timeline dot with glowing radar ping */}
+                <div className="absolute left-2.5 md:left-6.5 top-2 flex items-center justify-center">
+                  <span className="absolute h-4 w-4 rounded-full bg-orange-500/35 animate-ping pointer-events-none" />
+                  <span className="h-3 w-3 rounded-full border-2 border-orange-500 bg-background relative z-10" />
+                </div>
 
-                <div className="rounded-xl border border-border bg-card p-5 md:p-6 hover:shadow-md transition-shadow duration-300">
+                <div className="group rounded-xl border border-border/80 dark:border-white/10 bg-card p-5 md:p-6 hover:border-orange-500/40 hover:shadow-[0_10px_30px_-10px_rgba(249,115,22,0.18)] transition-all duration-300">
                   <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                     <div>
                       <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">

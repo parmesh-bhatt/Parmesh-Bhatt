@@ -72,23 +72,24 @@ const skillGroups: SkillGroup[] = [
   },
 ]
 
+import { snappySpring } from "@/lib/animations"
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.035,
     },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9, y: 10 },
+  hidden: { opacity: 0, y: 8 },
   visible: {
     opacity: 1,
-    scale: 1,
     y: 0,
-    transition: { type: "spring" as const, stiffness: 220, damping: 15 },
+    transition: snappySpring,
   },
 }
 
@@ -99,11 +100,11 @@ function SkillBadge({ skill }: { skill: Skill }) {
     <motion.div
       variants={itemVariants}
       whileHover={{
-        scale: 1.08,
-        y: -3,
-        transition: { type: "spring", stiffness: 400, damping: 12 },
+        scale: 1.05,
+        y: -2,
+        transition: { duration: 0.15, ease: "easeOut" },
       }}
-      className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-1.5 text-sm font-medium cursor-default hover:border-highlight/40 hover:shadow-sm transition-all"
+      className="flex items-center gap-2 rounded-lg border border-border/80 bg-background px-3 py-1.5 text-sm font-medium cursor-default hover:border-orange-500/50 hover:shadow-[0_0_14px_rgba(249,115,22,0.18)] transition-all duration-200"
     >
       <span
         className="text-base leading-none shrink-0 [&_svg]:size-4"
@@ -129,19 +130,18 @@ export default function Skills() {
           {skillGroups.map((group, i) => (
             <motion.div
               key={group.category}
-              initial={{ opacity: 0, y: 28, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              whileHover={{ y: -3, transition: { duration: 0.2, ease: "easeOut" } }}
               transition={{
-                type: "spring",
-                stiffness: 60,
-                damping: 15,
-                delay: i * 0.1,
+                ...snappySpring,
+                delay: i * 0.04,
               }}
-              className="rounded-xl border border-border bg-card p-6 space-y-4"
+              className="group relative overflow-hidden rounded-xl border border-border/80 dark:border-white/10 bg-card p-6 space-y-4 hover:border-orange-500/40 hover:shadow-[0_10px_30px_-10px_rgba(249,115,22,0.18)] transition-all duration-300"
             >
               <div className="space-y-1">
-                <h3 className="scroll-m-20 text-base font-semibold tracking-tight text-highlight">
+                <h3 className="scroll-m-20 text-base font-semibold tracking-tight text-orange-600 dark:text-orange-400 group-hover:translate-x-0.5 transition-transform">
                   {group.category}
                 </h3>
                 <p className="text-xs text-muted-foreground leading-5">{group.description}</p>
